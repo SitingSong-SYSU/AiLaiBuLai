@@ -1,6 +1,6 @@
 import Router from 'koa-router';
 import { userCtrl } from '../controllers';
-import { sendPage, sendData } from '../utils';
+import { sendData } from '../utils';
 import { courseModel } from '../models';
 
 

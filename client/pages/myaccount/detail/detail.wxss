@@ -1,1 +1,59 @@
 /* pages/myaccount/detail/detail.wxss */
+.sign-container{
+  width: 50%;
+  margin: 15px auto;
+  border-radius: 8px;
+  height: 120rpx;
+}
+
+.sign-box{
+  align-items: center;
+  background-color: #5074d7;
+  border: #5074d7 solid 1px;
+  height: 120rpx;
+  vertical-align: center;
+  border-radius: 8px;
+  box-shadow: 2px 4px 8px 5px #AEBDE6;
+}
+
+.sign-text{
+  vertical-align: center;
+  text-align: center;
+  color: #ffffff;
+  margin-top: 5px;
+}
+
+.signedIcon{
+  height: 20px;
+  width: 20px;
+  position: relative;
+  float: left;
+  margin-top: 8px;
+}
+
+.blue-order {
+  height: 90rpx;
+  width: 65%;
+  background-color: #5074d7;
+  border-radius: 8px;
+  margin-left: 16%;
+  box-shadow: 4px 6px 10px 6px #E8E8E8;
+}
+
+.white-bg{
+  height: 90rpx;
+  width: 99%;
+  background-color: #ffffff;
+  border-radius: 8px;
+  margin-left: 5px;
+}
+
+.list-view{
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.inner-view {
+  float: left;
+  margin-right: 20px;
+}

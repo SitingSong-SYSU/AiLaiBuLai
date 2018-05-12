@@ -1,5 +1,5 @@
 <view class='section'>
-  <view class="input-border">
+  <view class="input-border-new">
     <input class="input" placeholder='签到号' bindinput='share_id'/>
   </view>
   <image class='search-image' src='../../image/search.png' bindtap='findSignin'></image>
