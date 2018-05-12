@@ -232,14 +232,19 @@ GET /checkin/{checkin_id}
       "checkedin":[
           {
               "id":"15331689",
-              "name":"王同学"
+              "name":"王同学",
+              "university": "中山大学",
+              "msg": "备注信息"
           },
           {
               "id":"15457682",
-              "name":"李同学"
+              "name":"李同学",
+              "university": "中山大学",
+              "msg": "备注信息"                         
           }
       ],
       "checkedin_num":75,
+      "datetime":"xxxxxx",
       "is_on": false,
       "share_id": -1
     }
