@@ -11,7 +11,7 @@ export async function createDatabase() {
     const conn = mysql.createConnection({
       host: db.host,
       user: db.user,
-      pass: db.pass,
+      password: db.password,
     });
     conn.connect(function (err) {
       if (err) {

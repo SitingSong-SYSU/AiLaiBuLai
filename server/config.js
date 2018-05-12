@@ -20,8 +20,8 @@ export const CONF = {
         host: 'localhost',
         port: 3306,
         user: 'root',
-        pass: 'ugnamsung@1117',
-        database: 'checkInManager'
+        password: 'pincushion147',
+        database: 'aiLaiBuLai'
     },
 
     logFilePath: './checkin.log',

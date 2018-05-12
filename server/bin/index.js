@@ -7,6 +7,9 @@ import process from 'process';
 
 import { CONF } from '../config';
 import { logger } from '../utils';
+import { initDatabase } from '../models/init';
+
+initDatabase();
 
 const port = CONF.port;
 

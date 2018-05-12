@@ -31,7 +31,7 @@ POST /users/session
 
   + header
 
-    Token:xxxxxx
+    xxxxxx
 
   + body
 

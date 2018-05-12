@@ -28,7 +28,7 @@ export async function launchCheckin(ctx) {
 		ids = await CheckinServ.set(ctx.token, ctx.request.body.limit_time);
 	checkin.checkin = ids.checkin_id;
 
-	await checkinModel.createCheckin(checkin);
+	await checkinModel.createCheckinTable(checkin);
 	sendData(ctx, 201, JSON.stringify(ids.share_id));
 }
 
