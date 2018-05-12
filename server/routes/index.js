@@ -4,8 +4,6 @@ import { router as userRouter } from './users';
 import { router as checkinRouter } from './checkin';
 import { router as shareCheckinRouter } from './share_checkin';
 
-import { toMid } from '../utils';
-import { is_login } from '../services/user/is_login';
 
 export const router = new Router();
 

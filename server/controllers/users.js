@@ -1,5 +1,8 @@
+import fs from 'fs';
+
 import { sendData } from '../utils';
-import { userModel, checkinModel, checkinTokenModel } from '../models';
+import { userModel } from '../models';
+import { TokenServ } from '../service';
 
 /**
  * 登录
@@ -8,7 +11,8 @@ import { userModel, checkinModel, checkinTokenModel } from '../models';
  * @param {any} ctx 
  */
 export async function login(ctx) {
-    
+    ctx.response.set('Token', await TokenServ.generateToken(ctx.body.code));
+    ctx.response.status = 201;
 }
 
 /**
@@ -18,37 +22,15 @@ export async function login(ctx) {
  * @param {any} ctx 
  */
 export async function submitInfo(ctx) {
-    // 若是已经登陆，则重定向到登陆首页
-    if (ctx.user_id) {
-        ctx.status = 302;
-        if (ctx.is_manager) {
-            ctx.set('Location', '/userd');
-        } else {
-            ctx.set('Location', '/course');
-        }
-    } else {
-        // TODO 若是未登陆，则发送对应的网页
-        sendPage(ctx, 200);
+    const user = ctx.query;
+    const users = await userModel.getUser(user.token);
+    if (users.length !== 0) {
+        sendData(ctx, 401, JSON.stringify({ msg: '已提交过个人信息' }));
+        return;
     }
-}
-
-/**
- * 上传个人照片
- * 
- * @export
- * @param {any} ctx 
- */
-export async function uploadPicture(ctx) {
-    // 若是已经登陆，则重定向到登陆首页
-    if (ctx.user_id) {
-        ctx.status = 302;
-        if (ctx.is_manager) {
-            ctx.set('Location', '/userd');
-        } else {
-            ctx.set('Location', '/course');
-        }
-    } else {
-        // TODO 若是未登陆，则发送对应的网页
-        sendPage(ctx, 200);
-    }
+    user.token = ctx.request.header.token;
+    await userModel.createUser(user);
+    // TODO 未知是否可用
+    fs.writeFileSync(ctx.token + '.jpg', ctx.request.body, 'utf8');
+    sendData(ctx, 201, JSON.stringify({ msg: '提交个人信息成功' }));
 }
