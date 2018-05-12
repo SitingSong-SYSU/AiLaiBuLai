@@ -25,7 +25,7 @@ export async function launchCheckin(ctx) {
 	}
 
 	const checkin = ctx.request.body,
-	const ids = await CheckinServ.set(token, ctx.request.body.limit_time);
+		ids = await CheckinServ.set(ctx.token, ctx.request.body.limit_time);
 	checkin.checkin = ids.checkin_id;
 
 	await checkinModel.createCheckin(checkin);

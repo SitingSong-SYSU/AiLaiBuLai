@@ -13,7 +13,7 @@ const pitcPath = CONF.pitcPath;
  * @param {any} ctx 
  */
 export async function login(ctx) {
-    ctx.response.set('Token', await TokenServ.generateToken(ctx.body.code));
+    ctx.response.set('Token', await TokenServ.generateToken(ctx.request.body.code));
     ctx.response.status = 201;
 }
 

@@ -6,7 +6,7 @@ import logger from 'koa-logger';
 import Router from 'koa-router';
 import request from 'request';
 
-// import { router } from './routers';
+import { router } from './routers';
 
 
 app.use(bodyparser({
@@ -16,22 +16,22 @@ app.use(bodyparser({
 app.use(json());
 app.use(logger());
 
-// // handle error
-// const handler = async (ctx, next) => {
-//   try {
-//     await next();
-//   } catch (err) {
-//     ctx.response.status = 500;
-//     ctx.response.body = JSON.stringify({ 'msg': 'Server Error' });
-//   }
-// };
+// handle error
+const handler = async (ctx, next) => {
+  try {
+    await next();
+  } catch (err) {
+    ctx.response.status = 500;
+    ctx.response.body = JSON.stringify({ 'msg': 'Server Error' });
+  }
+};
 
-// app.use(handler);
+app.use(handler);
 
-// router
-// app.use(router.routes())
-//   .use(router.allowedMethods());
+router
+app.use(router.routes())
+  .use(router.allowedMethods());
 
-// app.use(router.routes()).use(router.allowedMethods());
+app.use(router.routes()).use(router.allowedMethods());
 
 export default app;

@@ -2,7 +2,7 @@ import fs from 'fs';
 
 import { sendData } from '../utils';
 import { checkinCtrl } from '.';
-import { checkinModel } from '../models';
+import { checkinModel, checkinTokenModel } from '../models';
 import { CheckinServ } from '../service';
 import { CONF } from '../config';
 import { createCheckinToken } from '../models/checkin_token';
@@ -18,11 +18,13 @@ export async function checkin(ctx) {
 	const user = ctx.query;
 	// TODO 检验gps是否符合要求
 	CheckinServ.isNearbyGPS();
+	fs.writeFileSync(`${pitcPath}/${ctx.token}v1.jpg`, ctx.request.body, 'utf8')
 	// TODO 检查照片人脸是否匹配，调用api
-	fs.writeFile(`${pitcPath}/${ctx.token}v1.jpg`, ctx.request.body, 'utf8', () => {
-		await createCheckinToken(user);
-		sendData(ctx, 201, JSON.stringify({ msg: '签到成功' }));
-	});
+	if (CheckinServ.isFaceMatch(token)) {
+
+	}
+	await checkinTokenModel.createCheckinToken(user);
+	sendData(ctx, 201, JSON.stringify({ msg: '签到成功' }));
 }
 
 /**

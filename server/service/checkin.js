@@ -105,5 +105,6 @@ export function isNearbyGPS(teacher_gps, student_gps) {
  * @param {any} token 
  */
 export function isFaceMatch(token) {
+  
   return true;
 }
