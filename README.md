@@ -41,8 +41,8 @@ POST /users/session
 
     ```
       {
-        "stduent_id": "15331117",
-        "student_name": "王小明",
+        "id": "15331117",
+        "name": "王小明",
         "school": "中山大学"
       }
     ```
@@ -230,12 +230,12 @@ GET /checkin/{checkin_id}
       "title":"软测b403"
       "checkedin":[
           {
-              "student_id":"15331689",
-              "student_name":"王同学"
+              "id":"15331689",
+              "name":"王同学"
           },
           {
-              "student_id":"15457682",
-              "student_name":"李同学"
+              "id":"15457682",
+              "name":"李同学"
           }
       ],
       "checkedin_num":75,
