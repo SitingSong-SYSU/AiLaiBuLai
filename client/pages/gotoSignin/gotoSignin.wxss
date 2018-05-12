@@ -1,6 +1,6 @@
 .camera-back {
   width: 80%;
-  margin: 0 20%;
+  margin: 20px 19% 5px 19%;
   height: 400rpx;
   overflow:hidden;
 }
@@ -9,6 +9,7 @@
   width: 80%;
   height: 400rpx;
   position: relative;
+  border-radius: 5px;
 }
 
 .image-back {
@@ -24,4 +25,13 @@
   width: 100rpx;
   position: absolute;
   left: calc(50% - 50rpx);
+}
+
+.search-image {
+  height: 30px;
+  width: 30px;
+  border-radius: 15px;
+  background: #5074d7;
+  margin-top: 2px;
+  margin-left: 5px;
 }

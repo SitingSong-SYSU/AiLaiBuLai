@@ -1,26 +1,49 @@
-const Koa = require('koa')
-const app = new Koa()
-const debug = require('debug')('koa-weapp-demo')
-const response = require('./middlewares/response')
-const bodyParser = require('koa-bodyparser')
-const config = require('./config')
+import Koa from 'koa';
+const app = new Koa();
+import json from 'koa-json';
+import bodyparser from 'koa-bodyparser';
+import logger from 'koa-logger';
+import Router from 'koa-router';
+import request from 'request';
+import { toMid } from './utils';
 
-// // 使用响应处理中间件
-// app.use(response)
+import { router } from './routers';
 
-// // 解析请求体
-// app.use(bodyParser())
+// async function test() {
+//   return await new Promise(function(resolve, reject) {
+//     request('http://apis.juhe.cn/qrcode/api?key=df6616c88fd11236bba916113cbb704b&text=https://www.baidu.com&type=2', function (error, response, body) {
+//       if (!error && response.statusCode === 200) {
+//         resolve(body);
+//       } else {
+//         reject(error);
+//       }
+//     });
+//   });
+// }
 
-// // 引入路由分发
-// const router = require('./routes')
-// app.use(router.routes())
+app.use(bodyparser({
+  enableTypes: ['json', 'form', 'text']
+}));
 
-// // 启动程序，监听端口
-// app.listen(config.port, () => debug(`listening on port ${config.port}`))
+app.use(json());
+app.use(logger());
 
-// response
-app.use(ctx => {
-  ctx.body = 'Hello Koa';
-});
+// handle error
+const handler = async (ctx, next) => {
+  try {
+    await next();
+  } catch (err) {
+    ctx.response.status = 500;
+    ctx.response.body = JSON.stringify({ 'msg': 'Server Error' });
+  }
+};
 
-app.listen(3000);
+app.use(handler);
+
+// router
+app.use(router.routes())
+  .use(router.allowedMethods());
+
+app.use(router.routes()).use(router.allowedMethods());
+
+export default app;

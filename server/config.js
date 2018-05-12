@@ -1,5 +1,5 @@
-const CONF = {
-    port: '5757',
+export const CONF = {
+    port: '8008',
     rootPathname: '',
 
     // 微信小程序 App ID
@@ -20,26 +20,14 @@ const CONF = {
         host: 'localhost',
         port: 3306,
         user: 'root',
-        db: 'cAuth',
         pass: 'ugnamsung@1117',
-        char: 'utf8mb4'
+        database: 'checkInManager'
     },
 
-    cos: {
-        /**
-         * 地区简称
-         * @查看 https://cloud.tencent.com/document/product/436/6224
-         */
-        region: 'ap-guangzhou',
-        // Bucket 名称
-        fileBucket: 'qcloudtest',
-        // 文件夹
-        uploadFolder: ''
-    },
+    logFilePath: './checkin.log',
 
     // 微信登录态有效期
     wxLoginExpires: 7200,
     wxMessageToken: 'abcdefgh'
 }
 
-module.exports = CONF
