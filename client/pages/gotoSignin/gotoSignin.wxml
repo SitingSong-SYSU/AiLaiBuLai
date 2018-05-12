@@ -7,7 +7,7 @@
 </view>
 
 <view class='camera-back'>
-  <camera device-position="back" flash="off" class='camera'>
+  <camera device-position="front" flash="off" class='camera'>
     <view class='image-back'>
        <image src='../../image/camera.png' class='takephoto' bindtap='takePhoto'/>
     </view>

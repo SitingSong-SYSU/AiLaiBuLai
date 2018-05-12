@@ -7,7 +7,7 @@
 </view>
 
 <view wx:if='{{is_on}}'>
-  <view>正在签到</view>
+  <view>正在签到，签到号为{{share_id}}</view>
   <view class='little-button'>停止签到</view>
 </view>
 <view wx:if='{{!is_on}}'>签到结束</view>

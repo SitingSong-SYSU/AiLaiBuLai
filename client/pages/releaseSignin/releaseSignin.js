@@ -3,6 +3,7 @@ var app = getApp();
 
 Page({
   data: {
+    // 地图数据
     latitude: 23.099994,
     longitude: 113.324520,
     markers: [{
@@ -15,21 +16,14 @@ Page({
       latitude: 23.099994,
       longitude: 113.344520,
       iconPath: '/image/location.png'
-    }, {
-      latitude: 23.099994,
-      longitude: 113.304520,
-      iconPath: '/image/location.png'
-    }]
+    }],
+
+    // 其它数据
+    title: ""
   },
 
-
-  showDialog() {
+  releaseSignin: function () {
     this.dialog.showDialog();
-  },
-
-  gotoSignin: function () {
-    var that = this;
-    this.showDialog();
     // app.getPosters(
     //   function (msg) {
     //     console.log('getPosters: ' + thePoster.data);
@@ -73,6 +67,20 @@ Page({
   onReady: function () {
     this.mapCtx = wx.createMapContext('myMap')
     this.dialog = this.selectComponent("#dialog")
+    var that = this;
+    wx.getLocation({
+      type: 'gcj02',
+      success: function (res) {
+        // var latitude = res.latitude
+        // var longitude = res.longitude
+        // var speed = res.speed
+        // var accuracy = res.accuracy
+        that.setData({
+          latitude: res.latitude,
+          longitude: res.longitude
+        })
+      }
+    })
   },
 
   /**

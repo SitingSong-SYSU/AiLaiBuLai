@@ -1,7 +1,7 @@
 <view class='section'>
   <view class="section__title">签到名称</view>
   <view class="input-border">
-    <input class="input"/>
+    <input class="input" bindinput='title'/>
   </view>
 </view>
 
@@ -17,7 +17,7 @@
   ></map>
 </view>
 
-<view class='blue-button' bindtap='gotoSignin'>
+<view class='blue-button' bindtap='releaseSignin'>
     <view class='button-innerText'>发布签到</view>
 </view>
 
