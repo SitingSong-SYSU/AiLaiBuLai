@@ -18,13 +18,13 @@
 
 <view class='section'>
   <view class="input-border">
-    <input class="input" bindinput='name' placeholder='姓名'/>
+    <input class="input" bindinput='changeName' placeholder='姓名'/>
   </view>
 </view>
 
 <view class='section'>
   <view class="input-border">
-    <input class="input" bindinput='id' placeholder='学号'/>
+    <input class="input" bindinput='changeId' placeholder='学号'/>
   </view>
 </view>
 

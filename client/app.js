@@ -146,6 +146,7 @@ App({
    * 请求成功返回share_id
    */
   releaseSignin: function (signinMessage, callBack) {
+    console.log(signinMessage);
     var that = this;
     var value = wx.getStorageSync('token');
     wx.request({
@@ -184,7 +185,7 @@ App({
     var that = this;
     var value = wx.getStorageSync('token');
     wx.request({
-      url: that.globalData.url + 'share_checkin/{' + myMseeage.share_id + '}?latitude=' + myMseeage.latitude + '&longitude=' + myMseeage.longitude + '&msg=' + myMseeage.msg,
+      url: that.globalData.url + 'share_checkin/{' + myMseeage.share_id + '}?latitude=' + myMseeage.latitude + '&longitude=' + myMseeage.longitude,
       method: 'POST',
       header: {
         Token: value

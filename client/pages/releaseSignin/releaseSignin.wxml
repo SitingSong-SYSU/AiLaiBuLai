@@ -1,6 +1,6 @@
 <view class='section'>
   <view class="input-border">
-    <input class="input" bindinput='title' placeholder='签到名称'/>
+    <input class="input" bindinput='changeTitle' placeholder='签到名称'/>
   </view>
 </view>
 

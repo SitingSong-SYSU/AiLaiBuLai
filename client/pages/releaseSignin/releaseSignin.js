@@ -1,4 +1,3 @@
-// releaseSignin.js
 var app = getApp();
 
 Page({
@@ -19,7 +18,7 @@ Page({
     }],
 
     // 其它数据
-    index: 5,
+    index: 4,
     array: [10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60],
     title: "",
     share_id: 0,
@@ -33,7 +32,20 @@ Page({
     })
   },
 
+  changeTitle: function(e) {
+    this.setData({
+      title: e.detail.value
+    })
+  },
+
   releaseSignin: function () {
+    if (this.data.title == "") {
+      wx.showToast({
+        title: '名称不能为空',
+        icon: 'none',
+        duration: 2000
+      })
+    }
     var that = this;
     var signinMessage = {
       latitude: this.data.latitude,

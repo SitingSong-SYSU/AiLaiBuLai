@@ -11,14 +11,12 @@ Page({
       {
         "id": "15331689",
         "name": "王同学",
-        "university": "中山大学",
-        "msg": "备注信息"
+        "university": "中山大学"
       },
       {
         "id": "15457682",
         "name": "李同学",
-        "university": "中山大学",
-        "msg": "备注信息"
+        "university": "中山大学"
       }
     ],
     "checkedin_num": 75,

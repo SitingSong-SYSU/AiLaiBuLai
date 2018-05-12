@@ -15,12 +15,6 @@
 
 <view class='empty-view'/>
 
-<view class='section'>
-  <view class="input-border">
-    <input class="input" placeholder='备注' bindinput='changeComment'/>
-  </view>
-</view>
-
 <view class='blue-button' bindtap='gotoSignin'>
     <view class='button-innerText'>我要签到</view>
 </view>

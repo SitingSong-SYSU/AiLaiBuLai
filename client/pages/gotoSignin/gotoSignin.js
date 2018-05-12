@@ -4,7 +4,6 @@ var app = getApp();
 Page({
   data: {
     share_id: "",
-    comment: "",
     photo: "",
     isTakePhoto: false,
     latitude: 0,
@@ -38,7 +37,6 @@ Page({
       share_id: this.data.share_id,
       latitude: this.data.latitude,
       longitude: this.data.longitude,
-      msg: this.data.comment,
       photo: this.data.photo
     }
     app.gotoSignin(myMseeage,
@@ -64,12 +62,6 @@ Page({
   changeShare_id: function(e) {
     this.setData({
       share_id: e.detail.value
-    })
-  },
-
-  changeComment: function(e) {
-    this.setData({
-      comment: e.detail.value
     })
   },
 

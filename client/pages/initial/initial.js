@@ -18,6 +18,18 @@ Page({
     id: ""
   },
 
+  changeName: function(e) {
+    this.setData({
+      name: e.detail.value
+    })
+  },
+
+  changeId: function(e) {
+    this.setData({
+      id: e.detail.value
+    })
+  },
+
   takePhoto: function () {
     if (this.data.isTakePhoto == false) {
       var that = this;

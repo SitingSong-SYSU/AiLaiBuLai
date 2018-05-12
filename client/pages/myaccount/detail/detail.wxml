@@ -1,30 +1,30 @@
 <view class='detail-container'>
-<view class="sign-container">
-  <view class='sign-box'>
-    <view class='sign-text'>{{title}}</view>
-    <view class='sign-text'>共{{checkedin_num}}人签到</view>
+  <view class="sign-container">
+    <view class='sign-box'>
+      <view class='sign-text'>{{title}}</view>
+      <view class='sign-text'>共{{checkedin_num}}人签到</view>
+    </view>
   </view>
-</view>
 
-<view class='list-view' wx:for="{{checkedin}}" wx:key="{{item.student_id}}">
-  <view class="blue-order">
-    <view class="white-bg">
-      <image class='signedIcon' src='../../../image/tabBar/myaccount-hi.png'></image>
-      <view class='signMessage'>
-        <view class='inner-view'>{{item.student_id}}</view>
-        <view class='inner-view'>{{item.student_name}}</view>
+  <view class='list-view' wx:for="{{checkedin}}" wx:key="{{item.student_id}}">
+    <view class="blue-order">
+      <view class="white-bg">
+        <image class='signedIcon' src='../../../image/tabBar/myaccount-hi.png'></image>
+        <view class='signMessage'>
+          <view class='inner-view'>{{item.id}}</view>
+          <view class='inner-view'>{{item.name}}</view>
+        </view>
       </view>
     </view>
   </view>
-</view>
 
-<view wx:if='{{is_on}}'>
-  <view class='center-text'>正在签到，签到号为{{share_id}}</view>
-  <view class='blue-button'>
-    <view class='button-innerText'>
-      停止签到
+  <view wx:if='{{is_on}}'>
+    <view class='center-text'>正在签到，签到号为{{share_id}}</view>
+    <view class='blue-button'>
+      <view class='button-innerText'>
+        停止签到
+      </view>
     </view>
   </view>
-</view>
-<view class='center-text' wx:if='{{!is_on}}'>签到结束</view>
+  <view class='center-text' wx:if='{{!is_on}}'>签到结束</view>
 </view>
