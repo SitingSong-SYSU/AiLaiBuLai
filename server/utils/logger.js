@@ -1,5 +1,6 @@
 import log4js from 'log4js';
-import { logFilePath } from '../config';
+import { CONF } from '../config';
+const logFilePath = CONF.logFilePath;
 
 log4js.configure({
   appenders: {

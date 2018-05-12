@@ -4,14 +4,13 @@
     "description": "",
     "main": "app.js",
     "scripts": {
-        "start": "pm2 start process.prod.json --no-daemon",
-        "dev": "nodemon --config nodemon.json app.js",
-        "initdb": "npm install && node tools/initdb.js"
+        "dev": "babel-node bin/index.js"
     },
     "author": "Jason",
     "license": "MIT",
     "dependencies": {
         "axios": "^0.15.3",
+        "babel-preset-es2015": "^6.24.1",
         "knex": "^0.13.0",
         "koa-log4": "^2.1.0",
         "lodash": "^4.17.4",
@@ -22,7 +21,6 @@
         "redis": "^2.8.0",
         "wafer-node-sdk": "^1.3.4",
         "babel-polyfill": "^6.26.0",
-        "babel-preset-es2015": "^6.24.1",
         "koa": "^2.0.0-alpha.8",
         "koa-bodyparser": "^4.2.0",
         "koa-json": "^2.0.2",
@@ -36,5 +34,8 @@
         "babel-eslint": "^8.2.2",
         "babel-watch": "^2.0.7",
         "eslint": "^4.18.1"
-    }
+    },
+    "presets": [
+        "es2015"
+    ]
 }

@@ -1,5 +1,5 @@
 export const CONF = {
-    port: '8008',
+    port: 8008,
     rootPathname: '',
 
     // 微信小程序 App ID
