@@ -12,9 +12,9 @@ export async function createUserTable() {
   return await execAsync(
     `CREATE TABLE IF NOT EXISTS USER(
       token      VARCHAR(255)  PRIMARY KEY NOT NULL,
-      name       NVARCHAR(50)  NOT NULL,
-      id         VARCHAR(50)   NOT NULL,
-      university NVARCHAR(50)  NOT NULL
+      name       NVARCHAR(50)  ,
+      id         VARCHAR(50)   ,
+      university NVARCHAR(50)  
     )`,
     undefined,
     'create USER');
@@ -26,7 +26,8 @@ export async function dropUserTable() {
 
 // 新增用户
 export async function createUser(user) {
-  return await execAsync(`INSERT INTO USER (token, name, id，university) VALUES (?, ?, ?, ?)`,
+  // INSERT INTO USER (user_id, username, password) VALUES (?, ?, ?)
+  return await execAsync(`INSERT INTO USER (token, name, id, university) VALUES (?, ?, ?, ?)`,
     [user.token, user.name, user.id, user.university],
     'create user ' + JSON.stringify(user));
 }

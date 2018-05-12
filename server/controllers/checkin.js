@@ -8,6 +8,12 @@ import { CheckinServ } from '../service';
  * @param {any} ctx 
  */
 export async function getCheckinList(ctx) {
+	const token = ctx.request.header.token;
+	if (!token) {
+		sendData(ctx, 403, JSON.stringify({ msg: '请先登陆' }));
+		return;
+	}
+	ctx.token = token;
 	sendData(ctx, 200, JSON.stringify(await checkinModel.getCheckinList()));
 }
 
@@ -18,6 +24,12 @@ export async function getCheckinList(ctx) {
  * @param {any} ctx 
  */
 export async function launchCheckin(ctx) {
+	const token = ctx.request.header.token;
+	if (!token) {
+		sendData(ctx, 403, JSON.stringify({ msg: '请先登陆' }));
+		return;
+	}
+	ctx.token = token;
 	// 检查是否存在正在进行的签到
 	if (await CheckinServ.getCheckinIDByToken(ctx.token) !== nil) {
 		sendData(ctx, 401, JSON.stringify({ msg: '有签到正在进行，发起签到失败' }));
@@ -56,5 +68,11 @@ export async function stopCheckin(ctx) {
  * @param {any} ctx 
  */
 export async function getCheckinInfo(ctx) {
+	const token = ctx.request.header.token;
+	if (!token) {
+		sendData(ctx, 403, JSON.stringify({ msg: '请先登陆' }));
+		return;
+	}
+	ctx.token = token;
 	sendData(ctx, 200, await checkinModel.getCheckinInfo(ctx.token));
 }

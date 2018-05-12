@@ -24,14 +24,28 @@ export async function login(ctx) {
  * @param {any} ctx 
  */
 export async function submitInfo(ctx) {
-    const user = ctx.query;
-    const users = await userModel.getUser(user.token);
+    const token = ctx.request.header.token;
+    if (!token) {
+        sendData(ctx, 403, JSON.stringify({ msg: '请先登陆' }));
+        return;
+    } 
+    ctx.token = token;
+    const user = ctx.request.query;
+    user.token = ctx.token;
+    const users = await userModel.getUser(ctx.token);
+
+    // ctx.response.status = 201;
+    // ctx.response.body = 'ghjk';
+    // console.log(ctx.response.status);
+    
     if (users.length !== 0) {
         sendData(ctx, 401, JSON.stringify({ msg: '已提交过个人信息' }));
         return;
     }
+
     await userModel.createUser(user);
     // TODO 未知是否可用
     fs.writeFileSync(`${pitcPath}/${ctx.token}.jpg`, ctx.request.body, 'utf8');
-    sendData(ctx, 201, JSON.stringify({ msg: '提交个人信息成功' }));
+    
+    sendData(ctx, 200, JSON.stringify({ msg: '提交个人信息成功' }));
 }

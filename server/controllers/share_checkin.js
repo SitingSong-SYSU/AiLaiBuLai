@@ -15,6 +15,12 @@ const port = CONF.port;
  * @param {any} ctx 
  */
 export async function checkin(ctx) {
+	const token = ctx.request.header.token;
+	if (!token) {
+		sendData(ctx, 403, JSON.stringify({ msg: '请先登陆' }));
+		return;
+	}
+	ctx.token = token;
 	const user = ctx.query;
 	// TODO 检验gps是否符合要求
 	CheckinServ.isNearbyGPS();
@@ -34,6 +40,12 @@ export async function checkin(ctx) {
  * @param {any} ctx 
  */
 export async function getCheckinTitle(ctx) {
+	const token = ctx.request.header.token;
+	if (!token) {
+		sendData(ctx, 403, JSON.stringify({ msg: '请先登陆' }));
+		return;
+	}
+	ctx.token = token;
 	const checkin_id = await checkinCtrl.getCheckinInfo(ctx.params.share_id),
 		checkinInfo = await checkinModel.getInfoByCheckID(checkin_id);
 	if (!checkin_id || checkinInfo.length === 0) {

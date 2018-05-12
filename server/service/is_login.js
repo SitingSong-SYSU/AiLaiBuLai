@@ -2,9 +2,9 @@ import { sendData } from '../utils';
 import { userModel } from '../models';
 
 
-export async function is_login(ctx) {
+export function is_login(ctx) {
   const token = ctx.request.header.token;
-  if (!token) {
+  if (token) {
     ctx.token = token;
   }
 }

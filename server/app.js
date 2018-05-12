@@ -22,7 +22,7 @@ const handler = async (ctx, next) => {
     await next();
   } catch (err) {
     ctx.response.status = 500;
-    ctx.response.body = JSON.stringify({ 'msg': 'Server Error' });
+    ctx.response.body = JSON.stringify({ 'msg': err });
   }
 };
 

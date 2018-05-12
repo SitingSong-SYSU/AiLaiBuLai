@@ -7,12 +7,21 @@ import { is_login } from '../service/is_login';
 
 
 export const router = new Router();
+// router.use(function(ctx, next) {
+//   ctx.response.status = 200;
+//   console.log(ctx.response.status);
+// })
+
 
 // 登录
 // POST /users/session
 router.post('/session', userCtrl.login);
 
-router.use(toMid(is_login));
+// router.use(toMid(is_login));
+
+
+// 提交个人信息
+router.post('/', userCtrl.submitInfo);
 
 router.use(function (ctx, next) {
   if (ctx.token) {
@@ -22,5 +31,3 @@ router.use(function (ctx, next) {
   }
 });
 
-// 提交个人信息
-router.post('/', userCtrl.submitInfo);

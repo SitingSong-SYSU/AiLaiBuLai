@@ -23,7 +23,7 @@ POST /users/session
     Token:xxxxxx
 
 
-### 提交个人信息
+### 提交个人信息[除图片部分外已测试]
 
 + request 
 
