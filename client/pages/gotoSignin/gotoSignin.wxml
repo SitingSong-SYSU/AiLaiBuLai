@@ -1,9 +1,8 @@
 <view class='section'>
-  <view class="section__title">签到号</view>
   <view class="input-border">
-    <input class="input"/>
+    <input class="input" placeholder='签到号'/>
   </view>
-  <view class='little-button'>查看</view>
+  <image class='search-image' src='../../image/search.png'></image>
 </view>
 
 <view class='camera-back'>
@@ -15,9 +14,8 @@
 </view>
 
 <view class='section'>
-  <view class="section__title">备注</view>
   <view class="input-border">
-    <input class="input"/>
+    <input class="input" placeholder='备注'/>
   </view>
 </view>
 
