@@ -27,7 +27,7 @@ POST /users/session
 
 + request 
 
-  POST /users
+  POST /users?id=1533117&name=王小明&university=中山大学
 
   + header
 
@@ -35,35 +35,11 @@ POST /users/session
 
   + body
 
-    ```
-      {
-        "id": "15331117",
-        "name": "王小明",
-        "university": "中山大学"
-      }
-    ```
+    image/image等图片
 
 + response
 
   201 OK
-
-### 上传个人照片
-
-+ request 
-
-  POST /users/picture
-
-  + header
-
-    Token:xxxxxx
-
-  + body
-
-    image/png等图片
-
-+ response
-
-    201 OK
 
 
 ### 发布签到 

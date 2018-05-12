@@ -1,8 +1,13 @@
 import Router from 'koa-router';
 import { shareCheckinCtrl } from '../controllers';
 import { sendData } from '../utils';
+import { toMid } from '../utils';
+import { is_login } from '../service/is_login';
 
 export const router = new Router();
+
+
+router.use(toMid(is_login));
 
 router.use(function (ctx, next) {
   if (ctx.token) {
