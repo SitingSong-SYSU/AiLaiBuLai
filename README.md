@@ -6,10 +6,6 @@
 
 POST /users/session
 
-  + header
-
-    Token:xxxxxx
-
   + body
 
     ```

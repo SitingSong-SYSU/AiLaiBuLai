@@ -1,7 +1,9 @@
-const mysql = require('mysql')
-const d = require('../config')
+import mysql from 'mysql';
+
+import { CONF } from '../config';
 import { logger } from '../utils';
 
+const db = CONF.mysql;
 
 export async function createDatabase() {
   return await new Promise(function (resolve, reject) {
@@ -9,7 +11,7 @@ export async function createDatabase() {
     const conn = mysql.createConnection({
       host: db.host,
       user: db.user,
-      password: db.password,
+      pass: db.pass,
     });
     conn.connect(function (err) {
       if (err) {

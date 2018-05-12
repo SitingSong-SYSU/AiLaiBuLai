@@ -30,3 +30,9 @@ export async function createUser(user) {
     [user.token, user.name, user.id, user.university],
     'create user ' + JSON.stringify(user));
 }
+
+export async function getUser(token) {
+  return await execAsync(`SELECT name, id, university FROM USER WHERE token = ?`,
+    [token],
+    'get user by token ' + token);
+}
