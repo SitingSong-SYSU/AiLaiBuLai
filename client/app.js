@@ -116,6 +116,7 @@ App({
    * callBack: 返回信息
    */
   commitPersonInfoamation: function(personInformation, callBack) {
+    console.log(personInformation);
     var that = this;
     var value = wx.getStorageSync('token');
     wx.request({

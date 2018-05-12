@@ -1,4 +1,5 @@
-// pages/initial/initial.js
+var app = getApp();
+
 Page({
 
   /**
@@ -69,6 +70,24 @@ Page({
 
   //确认事件
   _confirmEvent() {
+    if (this.data.name.length < 2 && this.data.name.length > 5) {
+      wx.showToast({
+        title: '输入姓名非法',
+        icon: 'none',
+        duration: 2000
+      });
+      this.dialog.hideDialog();
+      return;
+    }
+    if (this.data.id.length < 8) {
+      wx.showToast({
+        title: '输入学号非法',
+        icon: 'none',
+        duration: 2000
+      });
+      this.dialog.hideDialog();
+      return;
+    }
     var that = this;
     var personInformation = {
       id: this.data.id,
@@ -89,8 +108,8 @@ Page({
     this.dialog.hideDialog();
   },
 
-  releaseSignin: function() {
-    that.dialog.showDialog();
+  saveImformation: function() {
+    this.dialog.showDialog();
   },
 
   /**

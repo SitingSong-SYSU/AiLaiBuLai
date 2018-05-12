@@ -5,7 +5,6 @@
     "pages/myaccount/main/main",
     "pages/myaccount/detail/detail",
     "pages/initial/initial"
-    
   ],
   "window": {
     "backgroundTextStyle": "light",

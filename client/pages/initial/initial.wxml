@@ -28,7 +28,7 @@
   </view>
 </view>
 
-<view class='blue-button' bindtap='releaseSignin'>
+<view class='blue-button' bindtap='saveImformation'>
     <view class='button-innerText'>保存信息</view>
 </view>
 
