@@ -15,21 +15,29 @@ const port = CONF.port;
  * @param {any} ctx 
  */
 export async function checkin(ctx) {
+	console.log("???")
+
 	const token = ctx.request.header.token;
 	if (!token) {
 		sendData(ctx, 403, JSON.stringify({ msg: '请先登陆' }));
 		return;
 	}
 	ctx.token = token;
+
 	const user = ctx.query;
+
 	// TODO 检验gps是否符合要求
-	CheckinServ.isNearbyGPS();
-	fs.writeFileSync(`${pitcPath}/${ctx.token}v1.jpg`, ctx.request.body, 'utf8')
+	// CheckinServ.isNearbyGPS();
+	
+	// fs.writeFileSync(`${pitcPath}/${ctx.token}v1.jpg`, ctx.request.body, 'utf8')
+	
 	// TODO 检查照片人脸是否匹配，调用api
 	if (CheckinServ.isFaceMatch(token)) {
 
 	}
+	
 	await checkinTokenModel.createCheckinToken(user);
+	
 	sendData(ctx, 201, JSON.stringify({ msg: '签到成功' }));
 }
 

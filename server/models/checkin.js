@@ -81,16 +81,16 @@ export async function getGpsByCheckID(checkin_id) {
  */
 export async function getCheckinList(token) {
   return await execAsync(
-    `SELECT title, CHECKIN.checkin_id, datetime, checkedin_num, 0 AS flag
+    `SELECT title, CHECKIN.checkin_id, datetime, checkedin_num
       FROM 
-      ((SELECT COUNT(token) AS checkedin_num, checkin_id
+      (SELECT COUNT(token) AS checkedin_num, checkin_id
           FROM CHECKIN_TOKEN
           GROUP BY checkin_id
         ) AS CHECKEDIN_COUNT
       LEFT JOIN CHECKIN
         ON CHECKIN.checkin_id = CHECKEDIN_COUNT.checkin_id
-      WHERE CHECKIN.course_id = ?
-    ORDER BY datetime  DESC;`,
+      WHERE CHECKIN.token = ?
+    ORDER BY datetime  DESC`,
     [token],
     `get all checkin history by token ${token}`);
 }
@@ -112,7 +112,7 @@ export async function getCheckinInfo(checkin_id) {
       LEFT JOIN USER
         ON USER.token = CHECKIN_TOKEN.token
       WHERE checkin_id = ?
-    ORDER BY CHECKIN_TOKEN.id`,
+    ORDER BY id`,
     [course_id],
     `get a checkin history by checkin_id ${checkin_id}`);
 }

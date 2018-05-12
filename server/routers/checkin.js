@@ -17,8 +17,8 @@ router.post('/', checkinCtrl.launchCheckin);
 
 // DELETE /checkin/{checkin_id}
 // 点击结束签到
-router.delete('/', checkinCtrl.stopCheckin);
+router.delete('/:checkin_id', checkinCtrl.stopCheckin);
 
 // GET /checkin/{checkin_id}
 // 具体每个签到信息
-router.get('/', checkinCtrl.getCheckinInfo);
+router.get('/:checkin_id', checkinCtrl.getCheckinInfo);

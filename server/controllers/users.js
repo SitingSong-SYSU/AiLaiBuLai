@@ -33,10 +33,6 @@ export async function submitInfo(ctx) {
     const user = ctx.request.query;
     user.token = ctx.token;
     const users = await userModel.getUser(ctx.token);
-
-    // ctx.response.status = 201;
-    // ctx.response.body = 'ghjk';
-    // console.log(ctx.response.status);
     
     if (users.length !== 0) {
         sendData(ctx, 401, JSON.stringify({ msg: '已提交过个人信息' }));
@@ -47,5 +43,5 @@ export async function submitInfo(ctx) {
     // TODO 未知是否可用
     fs.writeFileSync(`${pitcPath}/${ctx.token}.jpg`, ctx.request.body, 'utf8');
     
-    sendData(ctx, 200, JSON.stringify({ msg: '提交个人信息成功' }));
+    sendData(ctx, 201, JSON.stringify({ msg: '提交个人信息成功' }));
 }

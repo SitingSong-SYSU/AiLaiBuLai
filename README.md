@@ -77,7 +77,7 @@ POST /users/session
     }
     ```
 
-### 参与签到 
+### 参与签到[需要填坑]
 
 + request 
 
@@ -136,7 +136,7 @@ POST /users/session
   }
   ```
 
-### 历史发布签到列表
+### 历史发布签到列表[已测试]
 
 + request
 

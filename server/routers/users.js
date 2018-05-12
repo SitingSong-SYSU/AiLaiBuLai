@@ -7,10 +7,6 @@ import { is_login } from '../service/is_login';
 
 
 export const router = new Router();
-// router.use(function(ctx, next) {
-//   ctx.response.status = 200;
-//   console.log(ctx.response.status);
-// })
 
 
 // 登录

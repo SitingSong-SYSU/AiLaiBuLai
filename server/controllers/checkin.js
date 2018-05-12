@@ -75,5 +75,8 @@ export async function getCheckinInfo(ctx) {
 		return;
 	}
 	ctx.token = token;
-	sendData(ctx, 200, await checkinModel.getCheckinInfo(ctx.token));
+	
+	const checkin_id = await CheckinServ.getCheckinIDByToken(ctx.token);
+	console.log(checkin_id)
+	sendData(ctx, 200, JSON.stringify(await checkinModel.getCheckinInfo(checkin_id)));
 }

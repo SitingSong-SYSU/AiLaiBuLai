@@ -4,7 +4,6 @@ import { router as userRouter } from './users';
 import { router as checkinRouter } from './checkin';
 import { router as shareCheckinRouter } from './share_checkin';
 
-
 export const router = new Router();
 
 router.use('/users', userRouter.routes(), userRouter.allowedMethods());
