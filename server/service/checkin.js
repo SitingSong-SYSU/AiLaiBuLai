@@ -92,10 +92,16 @@ async function del(key) {
  * @export
  * @param {any} teacher_gps 
  * @param {any} student_gps 
+ * latitude  纬度
+ * longitude 经度
  * @returns 
  */
 export function isNearbyGPS(teacher_gps, student_gps) {
-  return true
+  if (teacher_gps.latitude == student_gps.latitude && teacher_gps.longitude == student_gps.longitude) {
+    return true;
+  } else {
+    return false;
+  }
 }
 /**
  * 是否人脸匹配 
@@ -105,6 +111,27 @@ export function isNearbyGPS(teacher_gps, student_gps) {
  * @param {any} token 
  */
 export function isFaceMatch(token) {
-  
-  return true;
+  var libpath = '../tencentyoutuyun';
+
+  //var tencentyoutuyun = require('./tencentyoutuyun');
+  var conf = require(libpath + '/conf.js');
+  var youtu = require(libpath + '/youtu.js');
+  var auth = require(libpath + '/auth.js');
+
+  var appid = '10130588';
+  var secretId = 'AKIDviKl17tmLn6D8rJn3NYYMzRinzFOA9uY';
+  var secretKey = 'mbLvKIC3kLl15yhFdqwqZ7Ugt8MQJ1Yu';
+  var userid = '626531215';
+
+  conf.setAppInfo(appid, secretId, secretKey, userid, 0)
+
+
+  youtu.facecompare('${pitcPath}/${token}.jpg', '${pitcPath}/${token}v1.jpg', function (data) {
+    if (data && data.data && data.data.similarity && data.data.similarity > 50) {
+      return true;
+    } else {
+      return false;
+    }
+  });
+
 }
