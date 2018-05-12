@@ -35,7 +35,7 @@
 }
 
 .blue-order {
-  height: 90px;
+  height: 95px;
   width: 65%;
   background-color: #5074d7;
   border-radius: 8px;
@@ -44,7 +44,7 @@
 }
 
 .white-bg{
-  height: 90px;
+  height: 95px;
   width: 99%;
   background-color: #ffffff;
   border-radius: 8px;
@@ -54,4 +54,26 @@
 .list-view{
   margin-bottom: 80px;
   margin-top: 30px;
+}
+
+.signIcon{
+  height: 20px;
+  width: 20px;
+  position: relative;
+  float: left;
+  margin-top: 8px;
+}
+
+.signMessage{
+  position: relative;
+  float: left;
+}
+
+.inner-view{
+  margin-left: 5px;
+}
+
+.inner-view2{
+  color: #5074d7;
+  margin-left: 5px;
 }

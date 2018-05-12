@@ -1,16 +1,18 @@
 <view class="account-container">
     <view class="userInfo">
-        <open-data class='userinfo-avatar' type="userAvatarUrl"></open-data>
-        <open-data class='userinfo-nickname' type="userNickName"></open-data>
+        <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="scaleToFill" background-size="cover"></image>
+        <view class="userinfo-nickname">{{userInfo.nickName}}</view>
     </view>
 </view>
 
 <view class='list-view' wx:for="{{checkin_history}}" wx:key="{{item.checkin_id}}" bindtap='signinDetail'>
   <view class="blue-order">
     <view class="white-bg">
-      <view class='inner-view1'>{{item.title}}</view>
+      <image class='signIcon' src='../../../image/tabBar/gotoSignin-hi.png'></image>
+      <view class='signMessage'></view>
+      <view class='inner-view'>{{item.title}}</view>
       <view class='inner-view2'>{{item.datetime}}</view>
-      <view class='inner-view3'>{{item.checkedin_num}}</view>
+      <view class='inner-view'>签到人数：{{item.checkedin_num}}</view>
     </view>
   </view>
 </view>
