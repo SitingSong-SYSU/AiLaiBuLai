@@ -169,3 +169,8 @@
   padding-top: -19px;
   padding-bottom: -20px;
 }
+
+.center-text{
+  text-align: center;
+  color: #5D6885;
+}
