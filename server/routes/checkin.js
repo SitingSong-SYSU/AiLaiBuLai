@@ -1,7 +1,6 @@
 import Router from 'koa-router';
 import { checkinCtrl } from '../controllers';
-import { sendPage, sendData } from '../utils';
-import { courseModel } from '../models';
+import { sendData } from '../utils';
 
 
 export const router = new Router();
@@ -18,24 +17,16 @@ router.use(function(ctx, next) {
 
 // GET /checkin
 // 历史发布签到列表
-router.get('/', checkinCtrl.submitInfo);
+router.get('/', checkinCtrl.getCheckinList);
 
 // POST /checkin
 // 发布签到
-router.post('/', checkinCtrl.submitInfo);
-
-// POST /share_checkin/{share_id}?latitude=322.1&longitude=2332.32&msg=xxxx
-// 参与签到
-router.post('/{share_id}', checkinCtrl.submitInfo);
-
-// GET /share_checkin/{share_id}
-// 查看签到活动的名称
-router.post('/{share_id}', checkinCtrl.submitInfo);
+router.post('/', checkinCtrl.launchCheckin);
 
 // DELETE /checkin/{checkin_id}
 // 点击结束签到
-router.post('/', checkinCtrl.submitInfo);
+router.delete('/', checkinCtrl.stopCheckin);
 
 // GET /checkin/{checkin_id}
 // 具体每个签到信息
-router.post('/', checkinCtrl.submitInfo);
+router.get('/', checkinCtrl.getCheckinInfo);

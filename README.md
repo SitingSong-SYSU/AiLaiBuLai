@@ -41,8 +41,8 @@ POST /users/session
 
     ```
       {
-        "stduent_id": "15331117",
-        "student_name": "王小明",
+        "id": "15331117",
+        "name": "王小明",
         "school": "中山大学"
       }
     ```
@@ -182,17 +182,13 @@ POST /users/session
               "title":"软测b304",
               "checkin_id":"bhjinkl",
               "datetime":"2018-01-03 11:12:23",
-              "checkedin_num":80,
-              "is_on": true,
-              "share_id":2134
+              "checkedin_num":80
           },
           {
               "title":"系分b209",
               "checkin_id":"431bjjnk"
               "datetime":"2018-01-23 14:12:23",
-              "checkedin_num":75,
-              "is_on": false,
-              "share_id": 0
+              "checkedin_num":75
           }
         ]
       }
@@ -234,12 +230,12 @@ GET /checkin/{checkin_id}
       "title":"软测b403"
       "checkedin":[
           {
-              "student_id":"15331689",
-              "student_name":"王同学"
+              "id":"15331689",
+              "name":"王同学"
           },
           {
-              "student_id":"15457682",
-              "student_name":"李同学"
+              "id":"15457682",
+              "name":"李同学"
           }
       ],
       "checkedin_num":75,
