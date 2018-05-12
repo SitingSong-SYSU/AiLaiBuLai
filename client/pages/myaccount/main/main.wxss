@@ -1,25 +1,57 @@
+.account-container{
+  width: 68%;
+  margin: 15px auto;
+  border-radius: 8px;
+  height: 150rpx;
+}
+
 .userInfo {
-    background-color: #5074d7;
-    width: 100%;
-    height: 300rpx;
+    align-items: center;
+    background-color: #ffffff;
+    border: #5074d7 solid 1px;
+    height: 150rpx;
+    vertical-align: center;
+    border-radius: 8px;
+    box-shadow: 2px 4px 2px 2px #F2F2F2;
 }
 
 .userinfo-avatar {
     width: 128rpx;
     height: 128rpx;
-    margin: 20rpx;
+    top:70%;
     border-radius: 50%;
     float: left;
     position: relative;
-    top: 50%;
-    transform: translate(25%, -75%)
+    transform: translate(25%, -75%);
 }
 
 .userinfo-nickname {
-    color: white;
-    margin-left: 100rpx;
+    color: #5074d7;
+    margin-left: 40rpx;
     float: left;
     position: relative;
-    top: 50%;
-    transform: translate(20%, -50%)
+    top: 40%;
+    transform: translate(20%, -50%);
+}
+
+.blue-order {
+  height: 90px;
+  width: 65%;
+  background-color: #5074d7;
+  border-radius: 8px;
+  margin-left: 16%;
+  box-shadow: 4px 6px 10px 6px #E8E8E8;
+}
+
+.white-bg{
+  height: 90px;
+  width: 99%;
+  background-color: #ffffff;
+  border-radius: 8px;
+  margin-left: 5px;
+}
+
+.list-view{
+  margin-bottom: 80px;
+  margin-top: 30px;
 }

@@ -8,14 +8,14 @@ Page({
       {
         "title": "软测b304",
         "checkin_id": 1231,
-        "datetime": "2018-01-03 11:12:23",
+        "datetime": "2018-01-03 11:12",
         "checkedin_num": 80,
         "is_on": true
       },
       {
         "title": "系分b209",
         "checkin_id": 431,
-        "datetime": "2018-01-23 14:12:23",
+        "datetime": "2018-01-23 14:12",
         "checkedin_num": 75,
         "is_on": false
       }

@@ -41,7 +41,6 @@
     font: "Microsoft Yahei";
 }
 
-
 .input-border {
     vertical-align: top;
     display: inline-block;
@@ -59,7 +58,7 @@
     margin: 30rpx auto;
     margin-bottom: 0rpx;
     border-radius: 5px;
-    box-shadow: 0px 2px 4px 2px #A4B5E3;    
+    box-shadow: 0px 2px 4px 2px #A4B5E3;
 }
 
 .button-innerText {
@@ -90,7 +89,7 @@
     margin-bottom: 0rpx;
     border-radius: 5px;
     border: 1px #5074d7 solid;
-    box-shadow: 0px 2px 4px 2px #CAD0E3;    
+    box-shadow: 0px 2px 4px 2px #CAD0E3;
 }
 
 .button-innerText {
