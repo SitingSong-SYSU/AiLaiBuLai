@@ -179,13 +179,15 @@ POST /users/session
       {
         "checkin_history":[
           {
-              "checkin_id":1231
+              "title":"软测b304"
+              "checkin_id":1231,
               "datetime":"2018-01-03 11:12:23",
               "checkedin_num":80,
               "is_on": true,
               "share_id":2134
           },
           {
+              "title":"系分b209"
               "checkin_id":431
               "datetime":"2018-01-23 14:12:23",
               "checkedin_num":75,
@@ -229,6 +231,7 @@ GET /checkin/{checkin_id}
 
     ```
     {
+      "title":"软测b403"
       "checkedin":[
           {
               "student_id":"15331689",
