@@ -1,0 +1,38 @@
+.little-button {
+    height: 76rpx;
+    line-height: 76rpx;
+    display: inline-block;
+    margin: 0 10rpx;
+    padding: 5rpx 20rpx;
+    background-color: #5074d7;
+    color: white;
+    border-radius: 8rpx;
+}
+
+.camera-back {
+  width: 80%;
+  margin: 0 20%;
+  height: 400rpx;
+  overflow:hidden;
+}
+
+.camera {
+  width: 80%;
+  height: 400rpx;
+  position: relative;
+}
+
+.image-back {
+  height: 100rpx;
+  width: 100%;
+  position: absolute;
+  bottom: 0rpx;
+  background-color: rgba(0,0,0,0.4);
+}
+
+.takephoto {
+  height: 100rpx;
+  width: 100rpx;
+  position: absolute;
+  left: calc(50% - 50rpx);
+}

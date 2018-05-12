@@ -5,3 +5,51 @@
   align-items: center;
   box-sizing: border-box;
 } 
+
+.section {
+    margin: 60rpx auto;
+    position: relative;
+    height: 90rpx;
+}
+
+.section__title {
+    font-weight: bold;
+    color: rgb(105,105,105);
+    vertical-align: top;
+    display: inline-block;
+    height: 80rpx;
+    line-height: 80rpx;
+    font-size: 12pt;
+    margin: 0rpx 20rpx 0rpx 20rpx
+}
+
+.input {
+    height: 80rpx;
+    line-height: 80rpx;
+    font-size: 12pt;
+    margin: 0rpx 20rpx 0rpx 20rpx;
+}
+
+.input-border {
+    vertical-align: top;
+    display: inline-block;
+    border: 1rpx solid rgb(220,220,220);
+    width: 60%;
+}
+
+.blue-button {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #5074d7;
+    margin: 25rpx auto;
+    margin-bottom: 0rpx;
+}
+
+.button-innerText {
+    padding-top: 20rpx;
+    padding-bottom: 20rpx;
+    text-align: center;
+    font-size: 16pt;
+    color: white;
+}

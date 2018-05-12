@@ -3,8 +3,54 @@ var app = getApp();
 
 Page({
   data: {
-    // currentPoster: null,
-    msg: null
+    latitude: 23.099994,
+    longitude: 113.324520,
+    markers: [{
+      id: 1,
+      latitude: 23.099994,
+      longitude: 113.324520,
+      name: 'T.I.T 创意园'
+    }],
+    covers: [{
+      latitude: 23.099994,
+      longitude: 113.344520,
+      iconPath: '/image/location.png'
+    }, {
+      latitude: 23.099994,
+      longitude: 113.304520,
+      iconPath: '/image/location.png'
+    }]
+  },
+
+
+  showDialog() {
+    this.dialog.showDialog();
+  },
+
+  gotoSignin: function () {
+    var that = this;
+    this.showDialog();
+    // app.getPosters(
+    //   function (msg) {
+    //     console.log('getPosters: ' + thePoster.data);
+    //     that.setData({
+    //       currentPoster: thePoster.data
+    //     });
+    //   },
+    //   function () {}
+    // );
+  },
+
+  //取消事件
+  _cancelEvent() {
+    console.log('你点击了取消');
+    this.dialog.hideDialog();
+  },
+
+  //确认事件
+  _confirmEvent() {
+    console.log('你点击了确定');
+    this.dialog.hideDialog();
   },
 
   confirmButtonTap: function () {
@@ -25,7 +71,7 @@ Page({
      * 生命周期函数--监听页面初次渲染完成
      */
   onReady: function () {
-
+    this.mapCtx = wx.createMapContext('myMap')
   },
 
   /**

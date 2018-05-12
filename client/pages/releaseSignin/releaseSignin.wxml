@@ -1,0 +1,31 @@
+<view class='section'>
+  <view class="section__title">签到名称</view>
+  <view class="input-border">
+    <input class="input"/>
+  </view>
+</view>
+
+<view class="page-section page-section-gap">
+  <map
+    id="myMap"
+    style="width: 100%; height: 300px;"
+    latitude="{{latitude}}"
+    longitude="{{longitude}}"
+    markers="{{markers}}"
+    covers="{{covers}}"
+    show-location
+  ></map>
+</view>
+
+<view class='blue-button' bindtap='gotoSignin'>
+    <view class='button-innerText'>发布签到</view>
+</view>
+
+<dialog id='dialog'
+    title='我是标题' 
+    content='签到成功' 
+    cancelText='知道了' 
+    confirm='谢谢你'
+    bind:cancelEvent="_cancelEvent"  
+    bind:confirmEvent="_confirmEvent">
+</dialog>

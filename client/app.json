@@ -4,12 +4,11 @@
     "pages/releaseSignin/releaseSignin",
     "pages/myaccount/main/main"
   ],
-  "window":{
-    "backgroundColor":"#F6F6F6",
-    "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#F6F6F6",
-    "navigationBarTitleText": "Wafer Quick Start",
-    "navigationBarTextStyle":"black"
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#5074d7",
+    "navigationBarTitleText": "ailaibulai",
+    "navigationBarTextStyle": "white"
   },
   "tabBar": {
     "color": "#000000",

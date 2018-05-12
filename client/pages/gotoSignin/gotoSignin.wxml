@@ -1,1 +1,35 @@
-{{currentPoster}}
+<view class='section'>
+  <view class="section__title">签到号</view>
+  <view class="input-border">
+    <input class="input"/>
+  </view>
+  <view class='little-button'>查看</view>
+</view>
+
+<view class='camera-back'>
+  <camera device-position="back" flash="off" class='camera'>
+    <view class='image-back'>
+       <image src='../../image/camera.png' class='takephoto' bindtap='takePhoto'/>
+    </view>
+  </camera>
+</view>
+
+<view class='section'>
+  <view class="section__title">备注</view>
+  <view class="input-border">
+    <input class="input"/>
+  </view>
+</view>
+
+<view class='blue-button' bindtap='gotoSignin'>
+    <view class='button-innerText'>我要签到</view>
+</view>
+
+<dialog id='dialog' 
+    title='我是标题' 
+    content='签到成功' 
+    cancelText='知道了' 
+    confirm='谢谢你'
+    bind:cancelEvent="_cancelEvent"  
+    bind:confirmEvent="_confirmEvent">
+</dialog>

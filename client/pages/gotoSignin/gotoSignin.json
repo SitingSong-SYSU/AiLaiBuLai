@@ -1,6 +1,9 @@
 {
   "backgroundTextStyle": "light",
-  "navigationBarTitleText": "我要签到",
+  "navigationBarTitleText": "未知签到",
   "navigationBarTextStyle": "white",
-  "enablePullDownRefresh": true
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "dialog": "/components/dialog/dialog"
+  }
 }
