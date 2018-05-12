@@ -3,7 +3,6 @@ var app = getApp();
 
 Page({
   data: {
-    userInfo: {},
     checkin_history: [
       {
         "title": "软测b304",
@@ -37,13 +36,12 @@ Page({
   },
 
   onLoad: function (options) {
-    // console.log(options);
     var that = this;
     //调用应用实例的方法获取全局数据
-    app.getUserInfo(function (userInfo) {
+    app.signinHistory(function (checkin_history) {
       //更新数据
       that.setData({
-        userInfo: userInfo
+        checkin_history: checkin_history
       });
     });
   },

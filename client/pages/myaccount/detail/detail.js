@@ -8,12 +8,16 @@ Page({
     "title": "软测b403",
     "checkedin": [
       {
-        "student_id": "15331689",
-        "student_name": "王同学"
+        "id": "15331689",
+        "name": "王同学",
+        "university": "中山大学",
+        "msg": "备注信息"
       },
       {
-        "student_id": "15457682",
-        "student_name": "李同学"
+        "id": "15457682",
+        "name": "李同学",
+        "university": "中山大学",
+        "msg": "备注信息"
       }
     ],
     "checkedin_num": 75,
@@ -25,7 +29,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    app.findSignin(posterId.checkin_id,
+      function (checkedin) {
+        //更新数据
+        that.setData({
+          checkedin: checkedin
+        });
+      }
+    )
   },
 
   /**

@@ -49,20 +49,6 @@ Page({
     this.dialog.showDialog();
   },
 
-  gotoSignin: function () {
-    var that = this;
-    this.showDialog();
-    // app.getPosters(
-    //   function (msg) {
-    //     console.log('getPosters: ' + thePoster.data);
-    //     that.setData({
-    //       currentPoster: thePoster.data
-    //     });
-    //   },
-    //   function () {}
-    // );
-  },
-
   //取消事件
   _cancelEvent() {
     console.log('你点击了取消');
@@ -71,8 +57,27 @@ Page({
 
   //确认事件
   _confirmEvent() {
-    console.log('你点击了确定');
+    var that = this;
+    var personInformation = {
+      id: this.data.id,
+      name: this.data.name,
+      university: this.data.array[this.data.index],
+      photo: this.data.photo
+    }
+    app.commitPersonInfoamation(personInformation,
+      function (res) {
+        wx.showToast({
+          title: res,
+          duration: 2000
+        })
+      }
+    );
+
     this.dialog.hideDialog();
+  },
+
+  releaseSignin: function() {
+    that.dialog.showDialog();
   },
 
   /**
@@ -86,7 +91,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+    this.dialog = this.selectComponent("#dialog")
   },
 
   /**

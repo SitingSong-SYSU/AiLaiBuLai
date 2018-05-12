@@ -104,16 +104,12 @@ App({
     var that = this;
     var value = wx.getStorageSync('token');
     wx.request({
-      url: that.globalData.url + 'users',
+      url: that.globalData.url + 'users?id=' + personInformation.id + '&name=' + personInformation.name + '&university=' + personInformation.university,
       method: 'POST',
       header: {
         Token: value
       },
-      data: {
-        "id": personInformation.id,
-        "name": personInformation.name,
-        "university": personInformation.university
-      },
+      data: personInformation.photo,
       success(res) {
         if (parseInt(res.statusCode) === 201) {
           callBack('提交信息成功');
@@ -123,37 +119,6 @@ App({
       },
       fail() {
         callBack('提交信息失败，' + 'res.errMsg');
-      }
-    })
-    return callBack;
-  },
-
-  /**
-   * 上传个人照片
-   * photo: 个人照片
-   * callBack: 返回信息
-   */
-  uploadPhotos: function (photo, callBack) {
-    var that = this;
-    var value = wx.getStorageSync('token');
-    wx.request({
-      url: that.globalData.url + 'users/picture',
-      method: 'POST',
-      header: {
-        Token: value
-      },
-      data: {
-        photo: photo
-      },
-      success(res) {
-        if (parseInt(res.statusCode) === 201) {
-          callBack('提交照片成功');
-        } else {
-          callBack('提交照片失败');
-        }
-      },
-      fail() {
-        callBack('提交照片失败，' + 'res.errMsg');
       }
     })
     return callBack;
@@ -272,8 +237,7 @@ App({
       success(res) {
         callBack(res.data.checkin_history);
       },
-      fail(res) {
-        callBack('查询失败，' + res.errMsg);
+      fail() {
       }
     })
     return callBack;
@@ -326,12 +290,9 @@ App({
       success(res) {
         if (parseInt(res.statusCode) === 200) {
           callBack(res.data);
-        } else {
-          callBack('查询失败');
         }
       },
-      fail(res) {
-        callBack('查询失败，' + res.errMsg);
+      fail() {
       }
     })
     return callBack;

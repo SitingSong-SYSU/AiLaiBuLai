@@ -1,10 +1,11 @@
 {
   "pages": [
+    "pages/initial/initial",
     "pages/gotoSignin/gotoSignin",
     "pages/releaseSignin/releaseSignin",
     "pages/myaccount/main/main",
-    "pages/myaccount/detail/detail",
-    "pages/initial/initial"
+    "pages/myaccount/detail/detail"
+    
   ],
   "window": {
     "backgroundTextStyle": "light",
