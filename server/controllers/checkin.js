@@ -29,9 +29,10 @@ export async function launchCheckin(ctx) {
 		sendData(ctx, 403, JSON.stringify({ msg: '请先登陆' }));
 		return;
 	}
+	
 	ctx.token = token;
 	// 检查是否存在正在进行的签到
-	if (await CheckinServ.getCheckinIDByToken(ctx.token) !== nil) {
+	if (await CheckinServ.getCheckinIDByToken(ctx.token) !== null) {
 		sendData(ctx, 401, JSON.stringify({ msg: '有签到正在进行，发起签到失败' }));
 		return;
 	}

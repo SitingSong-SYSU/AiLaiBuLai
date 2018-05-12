@@ -6,16 +6,6 @@ import { is_login } from '../service/is_login';
 
 export const router = new Router();
 
-router.use(toMid(is_login));
-
-router.use(function (ctx, next) {
-  if (ctx.token) {
-    next();
-  } else {
-    // TODO
-    sendData(ctx, 401, JSON.stringify({ msg: '请先登录' }));
-  }
-});
 
 // GET /checkin
 // 历史发布签到列表

@@ -42,7 +42,7 @@ POST /users/session
   201 OK
 
 
-### 发布签到 
+### 发布签到[以测试]
 
 + request 
 
