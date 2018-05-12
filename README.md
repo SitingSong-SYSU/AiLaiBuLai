@@ -82,13 +82,14 @@ POST /users/session
 
   + body
 
-    [经度纬度](https://developers.weixin.qq.com/miniprogram/dev/api/location.html#wxchooselocationobject)名称
+    [经度纬度](https://developers.weixin.qq.com/miniprogram/dev/api/location.html#wxchooselocationobject)名称和签到时长(分钟)
 
     ```
       {
-        latitude: 124.2232,
-        longitude: 232.3232,
-        title: "软测b403"
+        "latitude": 124.2232,
+        "longitude": 232.3232,
+        "title": "软测b403",
+        "limit_time": 15
       }
     ```
 
