@@ -5,9 +5,7 @@ import { userModel } from '../models';
 
 export async function is_login(ctx) {
   const token = ctx.request.header.token;
-  
-  if (users.length !== 1) {
-    ctx.is_manager = users[0].is_manager;
-    ctx.user_id = user_id;
+  if (!token) {
+    ctx.token = token;
   }
 }

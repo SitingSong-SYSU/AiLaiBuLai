@@ -39,7 +39,7 @@ POST /users/session
       {
         "id": "15331117",
         "name": "王小明",
-        "school": "中山大学"
+        "university": "中山大学"
       }
     ```
 
