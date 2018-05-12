@@ -2,7 +2,7 @@
   width: 80%;
   margin: 20px 19% 5px 19%;
   height: 400rpx;
-  overflow:hidden;
+  position: absolute;
 }
 
 .camera {
@@ -12,9 +12,17 @@
   border-radius: 5px;
 }
 
+.image-photo {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 80%;
+  height: 400rpx;
+}
+
 .image-back {
   height: 100rpx;
-  width: 100%;
+  width: 80%;
   position: absolute;
   bottom: 0rpx;
   background-color: rgba(0,0,0,0.4);
@@ -25,6 +33,11 @@
   width: 100rpx;
   position: absolute;
   left: calc(50% - 50rpx);
+}
+
+.empty-view {
+  height: 500rpx;
+  width: 100%;
 }
 
 .search-image {

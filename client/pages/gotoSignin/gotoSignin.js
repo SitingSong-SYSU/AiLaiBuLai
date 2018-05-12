@@ -3,32 +3,35 @@ var app = getApp();
 
 Page({
   data: {
-    currentPoster: null
+    share_id: "",
+    comment: "",
+    photo: "",
+    isTakePhoto: false
   },
 
   /**
  * 拍照
  */
   takePhoto: function () {
-    var that = this
-    that.app.takePhoto({
-      quality: 'high',
-      success: (res) => {
-        wx.setStorage({
-          key: 'originalImagePath',
-          data: res.tempImagePath,
-        })
-        if (that.data.char) {
-          wx.navigateTo({
-            // url: 'upload?path=' + res.tempImagePath + '&char=' + that.data.char
+    console.log(this.data.isTakePhoto);
+    if (this.data.isTakePhoto == false) {
+      var that = this;
+      const ctx = wx.createCameraContext()
+      ctx.takePhoto({
+        quality: 'high',
+        success: (res) => {
+          that.setData({
+            photo: res.tempImagePath,
+            isTakePhoto: true
           })
-        } else {
-          wx.navigateTo({
-            // url: 'upload?path=' + res.tempImagePath + '&char=0'
-          })
+          console.log(res.tempImagePath)
         }
-      }
-    })
+      })
+    } else {
+      this.setData({
+        isTakePhoto: false
+      })
+    }
   },
 
   showDialog() {

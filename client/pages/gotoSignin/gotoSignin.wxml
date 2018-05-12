@@ -1,21 +1,23 @@
 <view class='section'>
   <view class="input-border">
-    <input class="input" placeholder='签到号'/>
+    <input class="input" placeholder='签到号' bindinput='share_id'/>
   </view>
   <image class='search-image' src='../../image/search.png'></image>
 </view>
 
 <view class='camera-back'>
-  <camera device-position="front" flash="off" class='camera'>
-    <view class='image-back'>
-       <image src='../../image/camera.png' class='takephoto' bindtap='takePhoto'/>
-    </view>
-  </camera>
+  <camera device-position="front" flash="auto" class='camera'/>
+  <image class='image-photo' wx:if='{{isTakePhoto == true}}' src='{{photo}}' aspectFill/>  
+  <view class='image-back'>
+      <image src='../../image/camera.png' class='takephoto' bindtap='takePhoto'/>
+  </view>
 </view>
+
+<view class='empty-view'/>
 
 <view class='section'>
   <view class="input-border">
-    <input class="input" placeholder='备注'/>
+    <input class="input" placeholder='备注' bindinput='comment'/>
   </view>
 </view>
 
