@@ -50,6 +50,15 @@
     margin: 0 5px 0 18%;
 }
 
+.input-border-new{
+    vertical-align: top;
+    display: inline-block;
+    border: 1rpx solid rgb(220,220,220);
+    border-radius: 5px;
+    width: 55%;
+    margin: 0 5px 0 18%;
+}
+
 .blue-button {
     padding-top: 7rpx;
     padding-bottom: 7rpx;
