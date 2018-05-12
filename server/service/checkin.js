@@ -4,6 +4,7 @@ import * as redisService from './redis';
 import { CONF } from '../config';
 
 const port = CONF.port;
+const pitcPath = CONF.pitcPath;
 
 /**
  * 生成随机的40位长度的CheckinID
@@ -97,8 +98,8 @@ export function isNearbyGPS(teacher_gps, student_gps) {
   return true
 }
 /**
- * 是否人脸匹配
- * 
+ * 是否人脸匹配 
+ * 两个图片位置：${pitcPath}/${token}.jpg 和 ${pitcPath}/${token}v1.jpg
  * 
  * @export
  * @param {any} token 
