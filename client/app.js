@@ -3,6 +3,7 @@ var qcloud = require('./vendor/wafer2-client-sdk/index')
 var config = require('./config')
 
 App({
+  // 登录函数
   onLaunch: function () {
     // qcloud.setLoginUrl(config.service.loginUrl)
     //调用API从本地缓存中获取数据
@@ -76,7 +77,7 @@ App({
     var that = this;
     var value = wx.getStorageSync('token');
     wx.request({
-      url: 'http://172.19.54.42:3000/',
+      url: that.globalData.url,
       data: {
         code: code
       },
@@ -93,7 +94,38 @@ App({
       },
     });
   },
+
+  /**
+   * 提交个人信息
+   */
+  commitPersonInfoamation: function(personInformation, callBack) {
+    var that = this;
+    var value = wx.getStorageSync('token');
+    wx.request({
+      url: that.globalData.url + 'users',
+      method: 'POST',
+      header: {
+        Token: value
+      },
+      data: {
+        "id": personInformation.id,
+        "name": personInformation.name,
+        "school": personInformation.school
+      },
+      success(res) {
+        if (parseInt(res.statusCode) === 201) {
+          callBack('提交成功');
+        } else {
+          
+        }
+      }
+    })
+  },
+
+
+  // 全局数据
   globalData: {
+    url: 'http://172.19.54.42:3000/',
     userInfo: null,
   }
 })
