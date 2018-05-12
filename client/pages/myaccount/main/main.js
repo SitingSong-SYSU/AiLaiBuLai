@@ -3,8 +3,23 @@ var app = getApp();
 
 Page({
   data: {
-    // currentPoster: null,
-    msg: null
+    userInfo: {},
+    checkin_history: [
+      {
+        "title": "软测b304",
+        "checkin_id": 1231,
+        "datetime": "2018-01-03 11:12:23",
+        "checkedin_num": 80,
+        "is_on": true
+      },
+      {
+        "title": "系分b209",
+        "checkin_id": 431,
+        "datetime": "2018-01-23 14:12:23",
+        "checkedin_num": 75,
+        "is_on": false
+      }
+    ]
   },
 
   confirmButtonTap: function () {
@@ -13,12 +28,24 @@ Page({
     })
   },
 
+  signinDetail: function (e) {
+    console.log(e);
+    var detailsUrl = '../detail/detail?checkin_id=' + e.currentTarget.dataset.checkin_id;
+    wx.navigateTo({
+      url: detailsUrl
+    });
+  },
+
   onLoad: function (options) {
-    console.log(options);
+    // console.log(options);
     var that = this;
-    this.setData({
-      msg: options.outputString
-    })
+    //调用应用实例的方法获取全局数据
+    app.getUserInfo(function (userInfo) {
+      //更新数据
+      that.setData({
+        userInfo: userInfo
+      });
+    });
   },
 
   /**

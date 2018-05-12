@@ -22,10 +22,8 @@
 </view>
 
 <dialog id='dialog'
-    title='我是标题' 
-    content='签到成功' 
-    cancelText='知道了' 
-    confirm='谢谢你'
+    title='发布签到' 
+    content='确认发布？'
     bind:cancelEvent="_cancelEvent"  
     bind:confirmEvent="_confirmEvent">
 </dialog>

@@ -1,0 +1,12 @@
+<view class="account-container">
+    <view class="userInfo">
+        <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="scaleToFill" background-size="cover"></image>
+        <view class="userinfo-nickname">{{userInfo.nickName}}</view>
+    </view>
+</view>
+
+<view class='list-view' wx:for="{{checkin_history}}" wx:key="{{item.checkin_id}}" bindtap='signinDetail'>
+  <view class='inner-view'>{{item.title}}</view>
+  <view class='inner-view'>{{item.datetime}}</view>
+  <view class='inner-view'>{{item.checkedin_num}}</view>
+</view>

@@ -2,5 +2,8 @@
   "backgroundTextStyle": "light",
   "navigationBarTitleText": "发布签到",
   "navigationBarTextStyle": "white",
-  "enablePullDownRefresh": true
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "dialog": "/components/dialog/dialog"
+  }
 }

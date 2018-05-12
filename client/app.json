@@ -1,8 +1,9 @@
 {
-  "pages":[
+  "pages": [
     "pages/gotoSignin/gotoSignin",
     "pages/releaseSignin/releaseSignin",
-    "pages/myaccount/main/main"
+    "pages/myaccount/main/main",
+    "pages/myaccount/detail/detail"
   ],
   "window": {
     "backgroundTextStyle": "light",

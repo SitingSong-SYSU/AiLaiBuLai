@@ -1,14 +1,3 @@
-.little-button {
-    height: 76rpx;
-    line-height: 76rpx;
-    display: inline-block;
-    margin: 0 10rpx;
-    padding: 5rpx 20rpx;
-    background-color: #5074d7;
-    color: white;
-    border-radius: 8rpx;
-}
-
 .camera-back {
   width: 80%;
   margin: 0 20%;

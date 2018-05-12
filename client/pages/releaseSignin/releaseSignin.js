@@ -62,9 +62,9 @@ Page({
   onLoad: function (options) {
     console.log(options);
     var that = this;
-    this.setData({
-      msg: options.outputString
-    })
+    // this.setData({
+    //   msg: options.outputString
+    // })
   },
 
   /**
@@ -72,6 +72,7 @@ Page({
      */
   onReady: function () {
     this.mapCtx = wx.createMapContext('myMap')
+    this.dialog = this.selectComponent("#dialog")
   },
 
   /**
