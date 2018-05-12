@@ -6,7 +6,10 @@ Page({
     share_id: "",
     comment: "",
     photo: "",
-    isTakePhoto: false
+    isTakePhoto: false,
+    latitude: 0,
+    longitude: 0,
+    title: "未知签到"
   },
 
   takePhoto: function () {
@@ -29,39 +32,56 @@ Page({
     }
   },
 
-  showDialog() {
-    this.dialog.showDialog();
-  },
-
   gotoSignin: function() {
     var that = this;
-    this.showDialog();
-    // app.getPosters(
-    //   function (msg) {
-    //     console.log('getPosters: ' + thePoster.data);
-    //     that.setData({
-    //       currentPoster: thePoster.data
-    //     });
-    //   },
-    //   function () {}
-    // );
+    var myMseeage = {
+      share_id: this.data.share_id,
+      latitude: this.data.latitude,
+      longitude: this.data.longitude,
+      msg: this.data.comment,
+      photo: this.data.photo
+    }
+    app.gotoSignin(myMseeage,
+      function (msg) {
+        that.setData({
+          resMsg: msg
+        });
+        that.dialog.showDialog();
+      }
+    );
   },
 
   //取消事件
   _cancelEvent() {
-    console.log('你点击了取消');
     this.dialog.hideDialog();
   },
 
   //确认事件
   _confirmEvent() {
-    console.log('你点击了确定');
     this.dialog.hideDialog();
   },
 
   confirmButtonTap: function () {
     wx.navigateBack({
       delta: 1
+    })
+  },
+
+  findSignin: function() {
+    var that = this;
+    app.findSignin(this.data.share_id, function(title) {
+      if (title.substr(0, 4) == '查询失败'){
+        wx.showToast({
+          title: title,
+          duration: 2000
+        })
+      } else {
+        // 设置当前标题栏为签到名称
+        wx.setNavigationBarTitle(title);
+        that.setData({
+          title: title
+        })
+      }
     })
   },
 
@@ -79,6 +99,16 @@ Page({
   onReady: function () {
     //获得dialog组件
     this.dialog = this.selectComponent("#dialog");
+    var that = this;
+    wx.getLocation({
+      type: 'gcj02',
+      success: function (res) {
+        that.setData({
+          latitude: res.latitude,
+          longitude: res.longitude
+        })
+      }
+    })
   },
 
   /**

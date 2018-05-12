@@ -112,7 +112,7 @@ App({
       data: {
         "id": personInformation.id,
         "name": personInformation.name,
-        "school": personInformation.school
+        "university": personInformation.university
       },
       success(res) {
         if (parseInt(res.statusCode) === 201) {
@@ -143,7 +143,7 @@ App({
         Token: value
       },
       data: {
-        photo
+        photo: photo
       },
       success(res) {
         if (parseInt(res.statusCode) === 201) {
@@ -244,8 +244,6 @@ App({
       success(res) {
         if (parseInt(res.statusCode) === 200) {
           callBack(res.data.title);
-        } else if (parseInt(res.statusCode) === 401) {
-          callBack(res.data.msg);
         } else {
           callBack('查询失败');
         }

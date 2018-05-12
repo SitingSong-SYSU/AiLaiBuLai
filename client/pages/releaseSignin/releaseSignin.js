@@ -21,7 +21,9 @@ Page({
     // 其它数据
     index: 5,
     array: [10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60],
-    title: ""
+    title: "",
+    share_id: 0,
+    errMsg: ""
   },
 
   bindPickerChange: function (e) {
@@ -32,27 +34,32 @@ Page({
   },
 
   releaseSignin: function () {
-    this.dialog.showDialog();
-    // app.getPosters(
-    //   function (msg) {
-    //     console.log('getPosters: ' + thePoster.data);
-    //     that.setData({
-    //       currentPoster: thePoster.data
-    //     });
-    //   },
-    //   function () {}
-    // );
+    var that = this;
+    var signinMessage = {
+      latitude: this.data.latitude,
+      longitude: this.data.longitude,
+      title: this.data.title,
+      limit_time: this.data.array[this.data.index]
+    }
+    app.releaseSignin(signinMessage,
+      function (msg) {
+        if (msg.substr(0, 6) == '提交照片失败') {
+          that.data.errMsg = msg;
+        } else {
+          that.data.share_id = msg;
+        }
+        that.dialog.showDialog();
+      }
+    );
   },
 
   //取消事件
   _cancelEvent() {
-    console.log('你点击了取消');
     this.dialog.hideDialog();
   },
 
   //确认事件
   _confirmEvent() {
-    console.log('你点击了确定');
     this.dialog.hideDialog();
   },
 
@@ -75,15 +82,11 @@ Page({
      */
   onReady: function () {
     this.mapCtx = wx.createMapContext('myMap')
-    this.dialog = this.selectComponent("#dialog")
+    this.dialog = this.selectComponent(".dialog")
     var that = this;
     wx.getLocation({
       type: 'gcj02',
       success: function (res) {
-        // var latitude = res.latitude
-        // var longitude = res.longitude
-        // var speed = res.speed
-        // var accuracy = res.accuracy
         that.setData({
           latitude: res.latitude,
           longitude: res.longitude

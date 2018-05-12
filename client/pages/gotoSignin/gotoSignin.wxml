@@ -2,7 +2,7 @@
   <view class="input-border">
     <input class="input" placeholder='签到号' bindinput='share_id'/>
   </view>
-  <image class='search-image' src='../../image/search.png'></image>
+  <image class='search-image' src='../../image/search.png' bindtap='findSignin'></image>
 </view>
 
 <view class='camera-back'>
@@ -26,8 +26,8 @@
 </view>
 
 <dialog id='dialog' 
-    title='我是标题' 
-    content='签到成功' 
+    title='{{title}} '
+    content='{{resMsg}}'
     cancelText='知道了' 
     confirm='谢谢你'
     bind:cancelEvent="_cancelEvent"  
