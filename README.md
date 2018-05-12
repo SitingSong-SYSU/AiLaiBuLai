@@ -182,17 +182,13 @@ POST /users/session
               "title":"软测b304",
               "checkin_id":"bhjinkl",
               "datetime":"2018-01-03 11:12:23",
-              "checkedin_num":80,
-              "is_on": true,
-              "share_id":2134
+              "checkedin_num":80
           },
           {
               "title":"系分b209",
               "checkin_id":"431bjjnk"
               "datetime":"2018-01-23 14:12:23",
-              "checkedin_num":75,
-              "is_on": false,
-              "share_id": 0
+              "checkedin_num":75
           }
         ]
       }

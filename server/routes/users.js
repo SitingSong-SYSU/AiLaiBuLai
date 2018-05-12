@@ -8,7 +8,7 @@ export const router = new Router();
 
 // 登录
 // POST /users/session
-router.post('/session', userCtrl.Login);
+router.post('/session', userCtrl.login);
 
 router.use(function(ctx, next) {
   if (ctx.user_id) {
