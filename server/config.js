@@ -25,6 +25,7 @@ export const CONF = {
     },
 
     logFilePath: './checkin.log',
+    pitcPath: './pictures',
 
     // 微信登录态有效期
     wxLoginExpires: 7200,

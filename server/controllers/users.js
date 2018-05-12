@@ -3,7 +3,9 @@ import fs from 'fs';
 import { sendData } from '../utils';
 import { userModel } from '../models';
 import { TokenServ } from '../service';
+import { CONF } from '../config';
 
+const pitcPath = CONF.pitcPath;
 /**
  * 登录
  * 
@@ -28,9 +30,8 @@ export async function submitInfo(ctx) {
         sendData(ctx, 401, JSON.stringify({ msg: '已提交过个人信息' }));
         return;
     }
-    user.token = ctx.request.header.token;
     await userModel.createUser(user);
     // TODO 未知是否可用
-    fs.writeFileSync(ctx.token + '.jpg', ctx.request.body, 'utf8');
+    fs.writeFileSync(`${pitcPath}/${ctx.token}.jpg`, ctx.request.body, 'utf8');
     sendData(ctx, 201, JSON.stringify({ msg: '提交个人信息成功' }));
 }

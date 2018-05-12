@@ -81,7 +81,7 @@ POST /users/session
 
 + request 
 
-  POST /share_checkin/{share_id}?latitude=322.1&longitude=2332.32&msg=xxxx
+  POST /share_checkin/{share_id}?latitude=322.1&longitude=2332.32
 
   + header
 
@@ -93,7 +93,7 @@ POST /users/session
 
 + response
 
-  + 200
+  + 201
 
     ```
     {
@@ -132,7 +132,7 @@ POST /users/session
 
   ```
   {
-    "msg":"该签到活动b不存在"
+    "msg":"该签到活动不存在"
   }
   ```
 
@@ -205,14 +205,12 @@ GET /checkin/{checkin_id}
           {
               "id":"15331689",
               "name":"王同学",
-              "university": "中山大学",
-              "msg": "备注信息"
+              "university": "中山大学"
           },
           {
               "id":"15457682",
               "name":"李同学",
-              "university": "中山大学",
-              "msg": "备注信息"                         
+              "university": "中山大学"                        
           }
       ],
       "checkedin_num":75,

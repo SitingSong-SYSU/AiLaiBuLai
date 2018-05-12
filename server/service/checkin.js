@@ -83,6 +83,7 @@ async function del(key) {
   await redisService.del(key);
 }
 
+// TODO
 
 /**
  * 判断是否是在附近的gps
@@ -94,4 +95,14 @@ async function del(key) {
  */
 export function isNearbyGPS(teacher_gps, student_gps) {
   return true
+}
+/**
+ * 是否人脸匹配
+ * 
+ * 
+ * @export
+ * @param {any} token 
+ */
+export function isFaceMatch(token) {
+  return true;
 }
