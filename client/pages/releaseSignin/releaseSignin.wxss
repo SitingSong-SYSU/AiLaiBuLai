@@ -5,11 +5,3 @@
   border-radius: 10px;
   margin: 2px 10%;
 }
-
-.picker{
-  align-content: center;
-  padding-left: 20%;
-  color: rgb(105,105,105);
-  padding-top: -19px;
-  padding-bottom: -20px;
-}

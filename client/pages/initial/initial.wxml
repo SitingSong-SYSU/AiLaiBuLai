@@ -1,0 +1,40 @@
+<view class='camera-back'>
+  <camera device-position="front" flash="auto" class='camera'/>
+  <image class='image-photo' wx:if='{{isTakePhoto == true}}' src='{{photo}}' aspectFill/>  
+  <view class='image-back'>
+      <image src='../../image/camera.png' class='takephoto' bindtap='takePhoto'/>
+  </view>
+</view>
+
+<view class='empty-view'/>
+
+<view class="section">
+  <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+    <view class="picker">
+      选择学校：{{array[index]}}
+    </view>
+  </picker>
+</view>
+
+<view class='section'>
+  <view class="input-border">
+    <input class="input" bindinput='name' placeholder='姓名'/>
+  </view>
+</view>
+
+<view class='section'>
+  <view class="input-border">
+    <input class="input" bindinput='id' placeholder='学号'/>
+  </view>
+</view>
+
+<view class='blue-button' bindtap='releaseSignin'>
+    <view class='button-innerText'>保存信息</view>
+</view>
+
+<dialog id='dialog'
+    title='保存信息' 
+    content='保存后无法修改，确认保存信息？'
+    bind:cancelEvent="_cancelEvent"  
+    bind:confirmEvent="_confirmEvent">
+</dialog>

@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/initial/initial",
     "pages/gotoSignin/gotoSignin",
     "pages/releaseSignin/releaseSignin",
     "pages/myaccount/main/main",

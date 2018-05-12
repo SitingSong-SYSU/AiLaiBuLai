@@ -17,7 +17,7 @@
 
 .userinfo-nickname {
     color: white;
-    margin-left: 40rpx;
+    margin-left: 100rpx;
     float: left;
     position: relative;
     top: 50%;

@@ -7,7 +7,7 @@
 <view class="section">
   <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
     <view class="picker">
-      选择截止时间：{{array[index]}} 分钟
+      选择签到时长：{{array[index]}} 分钟
     </view>
   </picker>
 </view>
@@ -15,7 +15,7 @@
 <view class="page-section page-section-gap">
   <map
     id="myMap"
-    style="width: 100%; height: 300px;"
+    style="width: 100%; height: 400rpx;"
     latitude="{{latitude}}"
     longitude="{{longitude}}"
     markers="{{markers}}"

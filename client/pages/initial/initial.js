@@ -1,12 +1,21 @@
-// gotoSignin.js
-var app = getApp();
-
+// pages/initial/initial.js
 Page({
+
+  /**
+   * 页面的初始数据
+   */
   data: {
-    share_id: "",
-    comment: "",
+    // 拍照数据
     photo: "",
-    isTakePhoto: false
+    isTakePhoto: false,
+
+    // 选择框数据
+    index: 0,
+    array: ['中山大学', '华南理工大学', '深圳大学', '香港中文大学',' 暨南大学'],
+
+    // 其它数据
+    name: "",
+    id: ""
   },
 
   takePhoto: function () {
@@ -29,11 +38,18 @@ Page({
     }
   },
 
+  bindPickerChange: function (e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      index: e.detail.value
+    })
+  },
+
   showDialog() {
     this.dialog.showDialog();
   },
 
-  gotoSignin: function() {
+  gotoSignin: function () {
     var that = this;
     this.showDialog();
     // app.getPosters(
@@ -59,67 +75,59 @@ Page({
     this.dialog.hideDialog();
   },
 
-  confirmButtonTap: function () {
-    wx.navigateBack({
-      delta: 1
-    })
-  },
-
+  /**
+   * 生命周期函数--监听页面加载
+   */
   onLoad: function (options) {
-    console.log(options);
-    var that = this;
-    // this.setData({
-    //   msg: options.outputString
-    // })
+  
   },
 
   /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
+   * 生命周期函数--监听页面初次渲染完成
+   */
   onReady: function () {
-    //获得dialog组件
-    this.dialog = this.selectComponent("#dialog");
+  
   },
 
   /**
-     * 生命周期函数--监听页面显示
-     */
+   * 生命周期函数--监听页面显示
+   */
   onShow: function () {
-
+  
   },
 
   /**
-     * 生命周期函数--监听页面隐藏
-     */
+   * 生命周期函数--监听页面隐藏
+   */
   onHide: function () {
-
+  
   },
 
   /**
-     * 生命周期函数--监听页面卸载
-     */
+   * 生命周期函数--监听页面卸载
+   */
   onUnload: function () {
-
+  
   },
 
   /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
   onPullDownRefresh: function () {
-
+  
   },
 
   /**
-     * 页面上拉触底事件的处理函数
-     */
+   * 页面上拉触底事件的处理函数
+   */
   onReachBottom: function () {
-
+  
   },
 
   /**
-     * 用户点击右上角分享
-     */
+   * 用户点击右上角分享
+   */
   onShareAppMessage: function () {
-
+  
   }
-});
+})
