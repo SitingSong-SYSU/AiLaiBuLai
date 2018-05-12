@@ -61,6 +61,18 @@ Page({
     this.dialog.hideDialog();
   },
 
+  changeShare_id: function(e) {
+    this.setData({
+      share_id: e.detail.value
+    })
+  },
+
+  changeComment: function(e) {
+    this.setData({
+      comment: e.detail.value
+    })
+  },
+
   confirmButtonTap: function () {
     wx.navigateBack({
       delta: 1
@@ -68,6 +80,14 @@ Page({
   },
 
   findSignin: function() {
+    if (this.data.share_id.length != 4) {
+      wx.showToast({
+        title: "签到号非法",
+        icon: "none",
+        duration: 2000
+      });
+      return;
+    }
     var that = this;
     app.findSignin(this.data.share_id, function(title) {
       if (title.substr(0, 4) == '查询失败'){
@@ -86,11 +106,7 @@ Page({
   },
 
   onLoad: function (options) {
-    console.log(options);
-    var that = this;
-    // this.setData({
-    //   msg: options.outputString
-    // })
+
   },
 
   /**

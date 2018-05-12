@@ -1,4 +1,5 @@
-// pages/myaccount/detail/detail.js
+var app = getApp();
+
 Page({
 
   /**
@@ -29,7 +30,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    app.findSignin(posterId.checkin_id,
+    app.findSignin(options.checkin_id,
       function (checkedin) {
         //更新数据
         that.setData({

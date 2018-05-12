@@ -68,6 +68,7 @@ Page({
       function (res) {
         wx.showToast({
           title: res,
+          icon: "none",
           duration: 2000
         })
       }

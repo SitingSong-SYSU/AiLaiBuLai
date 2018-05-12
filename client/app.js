@@ -95,6 +95,21 @@ App({
     });
   },
 
+  //保存服务器返回的Token
+  saveTokenOfCurrentUser: function (token) {
+    if (token) {
+      try {
+        wx.setStorageSync('key', 'value');
+      } catch (e) {
+        // console.log('ERROR; an error code returned by wx.setStorageSync(): %s', e.message);
+      }
+      var detailsUrl = 'pages/initial/initial';
+      wx.navigateTo({
+        url: detailsUrl
+      });
+    }
+  },
+
   /**
    * 提交个人信息
    * personInformation: 个人信息

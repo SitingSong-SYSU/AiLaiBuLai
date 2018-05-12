@@ -1,6 +1,6 @@
 <view class='section'>
   <view class="input-border-new">
-    <input class="input" placeholder='签到号' bindinput='share_id'/>
+    <input class="input" placeholder='签到号' bindinput='changeShare_id'/>
   </view>
   <image class='search-image' src='../../image/search.png' bindtap='findSignin'></image>
 </view>
@@ -17,7 +17,7 @@
 
 <view class='section'>
   <view class="input-border">
-    <input class="input" placeholder='备注' bindinput='comment'/>
+    <input class="input" placeholder='备注' bindinput='changeComment'/>
   </view>
 </view>
 
