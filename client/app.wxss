@@ -7,7 +7,7 @@
 } 
 
 .section {
-    margin: 60rpx auto;
+    margin: 45rpx auto;
     position: relative;
     height: 90rpx;
 }
@@ -17,10 +17,19 @@
     color: rgb(105,105,105);
     vertical-align: top;
     display: inline-block;
-    height: 80rpx;
-    line-height: 80rpx;
+    height: 60rpx;
+    line-height: 60rpx;
     font-size: 12pt;
-    margin: 0rpx 20rpx 0rpx 20rpx
+    margin: 0rpx 20rpx 0rpx 20rpx;
+}
+
+.section_title {
+  font-weight: bold;
+  color: rgb(105,105,105);
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 12pt;
+  margin: 0rpx 20rpx 0rpx 20rpx;
 }
 
 .input {

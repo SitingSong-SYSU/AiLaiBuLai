@@ -17,9 +17,17 @@ Page({
       longitude: 113.344520,
       iconPath: '/image/location.png'
     }],
-
+    index: 0,
+    array: [5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30],
     // 其它数据
     title: ""
+  },
+
+  bindPickerChange: function (e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      index: e.detail.value
+    })
   },
 
   releaseSignin: function () {
@@ -125,3 +133,4 @@ Page({
 
   }
 });
+

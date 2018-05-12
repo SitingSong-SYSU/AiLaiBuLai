@@ -1,8 +1,15 @@
 <view class='section'>
-  <view class="section__title">签到名称</view>
   <view class="input-border">
-    <input class="input" bindinput='title'/>
+    <input class="input" bindinput='title' placeholder='签到名称'/>
   </view>
+</view>
+
+<view class="section">
+  <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+    <view class="picker">
+      选择截止时间：{{array[index]}} 分钟
+    </view>
+  </picker>
 </view>
 
 <view class="page-section page-section-gap">
