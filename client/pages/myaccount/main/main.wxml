@@ -6,7 +6,11 @@
 </view>
 
 <view class='list-view' wx:for="{{checkin_history}}" wx:key="{{item.checkin_id}}" bindtap='signinDetail'>
-  <view class='inner-view'>{{item.title}}</view>
-  <view class='inner-view'>{{item.datetime}}</view>
-  <view class='inner-view'>{{item.checkedin_num}}</view>
+  <view class="blue-order">
+    <view class="white-bg">
+      <view class='inner-view1'>{{item.title}}</view>
+      <view class='inner-view2'>{{item.datetime}}</view>
+      <view class='inner-view3'>{{item.checkedin_num}}</view>
+    </view>
+  </view>
 </view>
