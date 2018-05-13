@@ -36,6 +36,13 @@ Page({
   },
 
   onLoad: function (options) {
+
+  },
+
+  /**
+     * 生命周期函数--监听页面初次渲染完成
+     */
+  onReady: function () {
     var that = this;
     //调用应用实例的方法获取全局数据
     app.signinHistory(function (checkin_history) {
@@ -44,13 +51,6 @@ Page({
         checkin_history: checkin_history
       });
     });
-  },
-
-  /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-  onReady: function () {
-
   },
 
   /**

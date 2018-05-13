@@ -5,11 +5,11 @@
   <image class='search-image' src='../../image/search.png' bindtap='findSignin'></image>
 </view>
 
-<view class='camera-back'>
+<view class='camera-back' bindtap='takePhoto'>
   <camera device-position="front" flash="auto" class='camera'/>
   <image class='image-photo' wx:if='{{isTakePhoto == true}}' src='{{photo}}' aspectFill/>  
   <view class='image-back'>
-      <image src='../../image/camera.png' class='takephoto' bindtap='takePhoto'/>
+      <image src='../../image/camera.png' class='takephoto'/>
   </view>
 </view>
 

@@ -124,14 +124,14 @@ App({
     console.log(personInformation);
     var that = this;
     var value = wx.getStorageSync('token');
-    wx.request({
+    wx.uploadFile({
       url: that.globalData.url + 'users?id=' + personInformation.id + '&name=' + personInformation.name + '&university=' + personInformation.university,
-      method: 'POST',
       header: {
-        'Token': value
+        "Token": value
       },
-      data: {
-        "photo": personInformation.photo
+      filePath: personInformation.photo,
+      name: 'file',
+      formData: {
       },
       success(res) {
         if (parseInt(res.statusCode) === 201) {
@@ -149,7 +149,7 @@ App({
 
   /**
    * 发布签到
-   * photo: 个人照片
+   * signinMessage: 签到信息
    * callBack: 返回信息
    * 请求成功返回share_id
    */
@@ -176,11 +176,11 @@ App({
           console.log(res);
           callBack(res.data.share_id);
         } else {
-          callBack('提交照片失败');
+          callBack('发布签到失败');
         }
       },
       fail() {
-        callBack('提交照片失败，' + res.errMsg);
+        callBack('发布签到失败：' + res.errMsg);
       }
     })
     return callBack;
@@ -196,19 +196,20 @@ App({
     console.log(myMseeage);
     var that = this;
     var value = wx.getStorageSync('token');
-    wx.request({
+    wx.uploadFile({
       url: that.globalData.url + 'share_checkin/' + myMseeage.share_id + '?latitude=' + myMseeage.latitude + '&longitude=' + myMseeage.longitude,
-      method: 'POST',
+      method: "POST",
       header: {
         "Token": value
       },
-      data: {
-        'photo': myMseeage.photo
+      filePath: myMseeage.photo,
+      name: 'file',
+      formData: {
       },
       success(res) {
         console.log(res);
         if (parseInt(res.statusCode) === 201 || 401) {
-          callBack(res.data.msg);
+          callBack('签到成功');
         } else {
           callBack('签到失败');
         }
