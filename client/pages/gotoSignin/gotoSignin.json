@@ -1,6 +1,6 @@
 {
   "backgroundTextStyle": "light",
-  "navigationBarTitleText": "未知签到",
+  "navigationBarTitleText": "我要签到",
   "navigationBarTextStyle": "white",
   "enablePullDownRefresh": true,
   "usingComponents": {

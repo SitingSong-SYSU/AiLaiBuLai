@@ -106,6 +106,10 @@ Page({
     );
 
     this.dialog.hideDialog();
+    var detailsUrl = '/pages/gotoSignin/gotoSignin';
+    wx.navigateTo({
+      url: detailsUrl
+    });
   },
 
   saveImformation: function() {

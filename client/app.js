@@ -29,9 +29,11 @@ App({
   },
   //检查当前Token是否存在
   checkWhetherTokenExists: function () {
+    console.log('checkWhetherTokenExists');
     try {
       // 本地缓存中token存储key为token
       var value = wx.getStorageSync('token');
+      console.log('token1: ' + value);
       var that = this;
       if (value) {
         // 发送当前token给服务器校验其有效性
@@ -59,6 +61,7 @@ App({
   },
   //用户微信登陆，并获得返回的Code
   currentUserLogin: function () {
+    console.log('currentUserLogin');
     var that = this;
     wx.login({
       success: function (res) {
@@ -74,10 +77,11 @@ App({
   // 返回code给服务器
   returnCodeToServer: function (code) {
     // console.log("code: " + code);
+    console.log('currentUserLogin' + code);
     var that = this;
     var value = wx.getStorageSync('token');
     wx.request({
-      url: that.globalData.url,
+      url: that.globalData.url + 'users/session',
       data: {
         code: code
       },
@@ -87,7 +91,7 @@ App({
       },
       method: 'POST',
       success: function (res) {
-        that.saveTokenOfCurrentUser(res.token);
+        that.saveTokenOfCurrentUser(res.header.Token);
       },
       fail: function () {
         // console.log('sending code failed' + res.errMsg);
@@ -97,13 +101,14 @@ App({
 
   //保存服务器返回的Token
   saveTokenOfCurrentUser: function (token) {
+    console.log('token: ' + token);
     if (token) {
       try {
-        wx.setStorageSync('key', 'value');
+        wx.setStorageSync('token', token);
       } catch (e) {
         // console.log('ERROR; an error code returned by wx.setStorageSync(): %s', e.message);
       }
-      var detailsUrl = 'pages/initial/initial';
+      var detailsUrl = '/pages/initial/initial';
       wx.navigateTo({
         url: detailsUrl
       });
@@ -123,9 +128,11 @@ App({
       url: that.globalData.url + 'users?id=' + personInformation.id + '&name=' + personInformation.name + '&university=' + personInformation.university,
       method: 'POST',
       header: {
-        Token: value
+        'Token': value
       },
-      data: personInformation.photo,
+      data: {
+        "photo": personInformation.photo
+      },
       success(res) {
         if (parseInt(res.statusCode) === 201) {
           callBack('提交信息成功');
@@ -150,11 +157,13 @@ App({
     console.log(signinMessage);
     var that = this;
     var value = wx.getStorageSync('token');
+    console.log(value);
     wx.request({
       url: that.globalData.url + 'checkin',
       method: 'POST',
       header: {
-        Token: value
+        "Token": value,
+        "Content-Type": "application/json"
       },
       data: {
         "latitude": signinMessage.latitude,
@@ -164,13 +173,14 @@ App({
       },
       success(res) {
         if (parseInt(res.statusCode) === 201) {
+          console.log(res);
           callBack(res.data.share_id);
         } else {
           callBack('提交照片失败');
         }
       },
       fail() {
-        callBack('提交照片失败，' + 'res.errMsg');
+        callBack('提交照片失败，' + res.errMsg);
       }
     })
     return callBack;
@@ -183,18 +193,20 @@ App({
    * 请求成功返回签到成功/失败提示
    */
   gotoSignin: function (myMseeage, callBack) {
+    console.log(myMseeage);
     var that = this;
     var value = wx.getStorageSync('token');
     wx.request({
-      url: that.globalData.url + 'share_checkin/{' + myMseeage.share_id + '}?latitude=' + myMseeage.latitude + '&longitude=' + myMseeage.longitude,
+      url: that.globalData.url + 'share_checkin/' + myMseeage.share_id + '?latitude=' + myMseeage.latitude + '&longitude=' + myMseeage.longitude,
       method: 'POST',
       header: {
-        Token: value
+        "Token": value
       },
       data: {
-        photo: myMseeage.photo
+        'photo': myMseeage.photo
       },
       success(res) {
+        console.log(res);
         if (parseInt(res.statusCode) === 201 || 401) {
           callBack(res.data.msg);
         } else {
@@ -202,7 +214,8 @@ App({
         }
       },
       fail(res) {
-        callBack('签到失败，' + 'res.errMsg');
+        console.log(url);
+        callBack('签到失败，' + res.errMsg);
       }
     })
     return callBack;
@@ -214,24 +227,21 @@ App({
    * callBack: 返回信息
    * 请求成功返回签到成功/失败提示
    */
-  findSignin: function (share_id, callBack) {
+  findSigninByNum: function (share_id, callBack) {
     var that = this;
     var value = wx.getStorageSync('token');
     wx.request({
-      url: that.globalData.url + 'share_checkin/{' + share_id + '}',
+      url: that.globalData.url + 'share_checkin/' + share_id,
       method: 'GET',
       header: {
-        Token: value
+        "Token": value
       },
       success(res) {
-        if (parseInt(res.statusCode) === 200) {
+        if (res.statusCode == "200") {
           callBack(res.data.title);
-        } else {
-          callBack('查询失败');
         }
       },
       fail(res) {
-        callBack('查询失败，' + res.errMsg);
       }
     })
     return callBack;
@@ -249,10 +259,11 @@ App({
       url: that.globalData.url + 'checkin',
       method: 'GET',
       header: {
-        Token: value
+        'Token': 1
       },
       success(res) {
-        callBack(res.data.checkin_history);
+        console.log(res);
+        callBack(res.data);
       },
       fail() {
       }
@@ -266,14 +277,14 @@ App({
  * callBack: 返回信息
  * 请求成功返回签到成功/失败提示
  */
-  findSignin: function (checkin_id, callBack) {
+  endSignin: function (checkin_id, callBack) {
     var that = this;
     var value = wx.getStorageSync('token');
     wx.request({
-      url: that.globalData.url + 'checkin/{' + checkin_id+ '}',
+      url: that.globalData.url + 'checkin/' + checkin_id,
       method: 'DELETE',
       header: {
-        Token: value
+        'Token': value
       },
       success(res) {
         if (parseInt(res.statusCode) === 204) {
@@ -299,13 +310,14 @@ App({
     var that = this;
     var value = wx.getStorageSync('token');
     wx.request({
-      url: that.globalData.url + 'checkin/{' + checkin_id + '}',
+      url: that.globalData.url + 'checkin/' + checkin_id + '',
       method: 'GET',
       header: {
-        Token: value
+        'Token': value
       },
       success(res) {
         if (parseInt(res.statusCode) === 200) {
+          console.log(res);
           callBack(res.data);
         }
       },
@@ -317,7 +329,7 @@ App({
 
   // 全局数据
   globalData: {
-    url: 'http://172.19.54.42:3000/',
+    url: 'http://192.168.43.206:8008/',
     userInfo: null,
   }
 })

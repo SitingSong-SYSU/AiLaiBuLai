@@ -28,16 +28,9 @@
     <view class='button-innerText'>发布签到</view>
 </view>
 
-<dialog class='dialog' wx:if='{{(share_id != 0)}}'
-    title='发布成功'
-    content='请记录签到号：{{share_id}}'
-    bind:cancelEvent="_cancelEvent"  
-    bind:confirmEvent="_confirmEvent">
-</dialog>
-
-<dialog class='dialog' wx:if='{{(share_id == 0)}}'
-    title='发布失败'
-    content='{{errMsg}}'
+<dialog id='dialog'
+    title='发布签到'
+    content='{{share_id}}'
     bind:cancelEvent="_cancelEvent"  
     bind:confirmEvent="_confirmEvent">
 </dialog>

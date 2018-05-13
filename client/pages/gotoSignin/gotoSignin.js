@@ -8,7 +8,8 @@ Page({
     isTakePhoto: false,
     latitude: 0,
     longitude: 0,
-    title: "未知签到"
+    title: "未知签到",
+    resMsg: ""
   },
 
   takePhoto: function () {
@@ -81,17 +82,17 @@ Page({
       return;
     }
     var that = this;
-    app.findSignin(this.data.share_id, function(title) {
-      if (title.substr(0, 4) == '查询失败'){
+    app.findSigninByNum(this.data.share_id, function(title) {
+      if (title.length == 0){
         wx.showToast({
-          title: title,
+          title: "查询失败",
+          icon: "none",
           duration: 2000
         })
       } else {
-        // 设置当前标题栏为签到名称
-        wx.setNavigationBarTitle(title);
-        that.setData({
-          title: title
+        wx.showToast({
+          title: title,
+          duration: 2000
         })
       }
     })

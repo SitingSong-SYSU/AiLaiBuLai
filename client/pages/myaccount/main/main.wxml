@@ -12,7 +12,6 @@
       <view class='signMessage'></view>
       <view class='inner-view'>{{item.title}}</view>
       <view class='inner-view2'>{{item.datetime}}</view>
-      <view class='inner-view'>签到人数：{{item.checkedin_num}}</view>
     </view>
   </view>
 </view>

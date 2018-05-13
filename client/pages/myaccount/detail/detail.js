@@ -6,33 +6,41 @@ Page({
    * 页面的初始数据
    */
   data: {
-    "title": "软测b403",
-    "checkedin": [
-      {
-        "id": "15331689",
-        "name": "王同学",
-        "university": "中山大学"
-      },
-      {
-        "id": "15457682",
-        "name": "李同学",
-        "university": "中山大学"
+    all: {
+    }
+  },
+
+  stopChechin: function() {
+    var that = this;
+    app.endSignin(this.data.checkin_id,
+      function(msg) {
+        wx.showToast({
+          title: msg,
+          icon: "none",
+          duration: 2000
+        });
+        app.findSignin(options.checkin_id,
+          function (all) {
+            //更新数据
+            that.setData({
+              all: all
+            });
+          }
+        )
       }
-    ],
-    "checkedin_num": 75,
-    "is_on": true,
-    "share_id": 2132
+    )
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that = this;
     app.findSignin(options.checkin_id,
-      function (checkedin) {
+      function (all) {
         //更新数据
         that.setData({
-          checkedin: checkedin
+          all: all
         });
       }
     )

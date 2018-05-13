@@ -22,8 +22,8 @@
 <dialog id='dialog' 
     title='{{title}} '
     content='{{resMsg}}'
-    cancelText='知道了' 
-    confirm='谢谢你'
+    cancelText='知道了'
+    confirm='确认'
     bind:cancelEvent="_cancelEvent"  
     bind:confirmEvent="_confirmEvent">
 </dialog>

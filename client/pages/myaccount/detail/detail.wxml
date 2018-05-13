@@ -20,7 +20,7 @@
 
   <view wx:if='{{is_on}}'>
     <view class='center-text'>正在签到，签到号为{{share_id}}</view>
-    <view class='blue-button'>
+    <view class='blue-button' bindtap='stopChechin'>
       <view class='button-innerText'>
         停止签到
       </view>

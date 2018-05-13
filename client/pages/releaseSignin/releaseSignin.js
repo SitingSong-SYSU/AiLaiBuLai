@@ -21,8 +21,7 @@ Page({
     index: 4,
     array: [10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60],
     title: "",
-    share_id: 0,
-    errMsg: ""
+    share_id: "0"
   },
 
   bindPickerChange: function (e) {
@@ -45,6 +44,7 @@ Page({
         icon: 'none',
         duration: 2000
       })
+      return;
     }
     var that = this;
     var signinMessage = {
@@ -55,11 +55,9 @@ Page({
     }
     app.releaseSignin(signinMessage,
       function (msg) {
-        if (msg.substr(0, 6) == '提交照片失败') {
-          that.data.errMsg = msg;
-        } else {
-          that.data.share_id = msg;
-        }
+        that.setData({
+          share_id: "" + msg
+        });
         that.dialog.showDialog();
       }
     );
@@ -94,7 +92,7 @@ Page({
      */
   onReady: function () {
     this.mapCtx = wx.createMapContext('myMap')
-    this.dialog = this.selectComponent(".dialog")
+    this.dialog = this.selectComponent("#dialog")
     var that = this;
     wx.getLocation({
       type: 'gcj02',
