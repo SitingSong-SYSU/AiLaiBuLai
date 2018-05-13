@@ -17,9 +17,9 @@ export async function initDatabase() {
 }
 
 export async function initDatabaseForTest() {
-  await dropCheckinTable();
-  await dropCheckinTokenTable();
-  await dropUserTable();
+  // await dropCheckinTable();
+  // await dropCheckinTokenTable();
+  // await dropUserTable();
 
   await createDatabase();
   await createUserTable();

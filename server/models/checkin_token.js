@@ -10,8 +10,9 @@ import { execAsync } from './util';
 export async function createCheckinTokenTable() {
   return await execAsync(
     `CREATE TABLE IF NOT EXISTS CHECKIN_TOKEN(
-      checkin_id   VARCHAR(50) 	  PRIMARY KEY NOT NULL,
-      token        VARCHAR(255)   NOT NULL
+      checkin_id   VARCHAR(50) 	  NOT NULL,
+      token        VARCHAR(255)   NOT NULL,
+      PRIMARY KEY (checkin_id, token)
     )`,
     undefined,
     'create CHECKIN_TOKEN');

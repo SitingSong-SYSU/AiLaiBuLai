@@ -37,7 +37,7 @@ export async function dropCheckinTable() {
  * @returns 
  */
 export async function createCheckin(checkin) {
-  return await execAsync(`INSERT INTO CHECKIN (checkin_id, title, token, latitude, longitude) VALUES (?, ?, ?, ?)`,
+  return await execAsync(`INSERT INTO CHECKIN (checkin_id, title, token, latitude, longitude) VALUES (?, ?, ?, ?, ?)`,
     [checkin.checkin_id, checkin.title, checkin.token, checkin.latitude, checkin.longitude],
     'create Checkin ' + JSON.stringify(checkin));
 }
@@ -49,8 +49,8 @@ export async function createCheckin(checkin) {
  * @param {any} checkin_id 
  * @returns 
  */
-export async function getInfoByCheckID(checkin_id) {
-  return await execAsync('SELECT titel, datetime FROM CHECKIN WHERE checkin_id = ?',
+export async function getInfoByCheckinID(checkin_id) {
+  return await execAsync('SELECT title, datetime FROM CHECKIN WHERE checkin_id = ?',
     [checkin_id],
     `select gps by checkin_id ${checkin_id}`);
 }
@@ -105,14 +105,15 @@ export async function getCheckinList(token) {
  * @returns 
  */
 export async function getCheckinInfo(checkin_id) {
+  console.log('cfghuijok')
   return await execAsync(
-    `SELECT id, name, university
+    `SELECT USER.id, USER.name, USER.university
       FROM
         CHECKIN_TOKEN
-      LEFT JOIN USER
+      RIGHT JOIN USER
         ON USER.token = CHECKIN_TOKEN.token
-      WHERE checkin_id = ?
+      WHERE CHECKIN_TOKEN.checkin_id = ?
     ORDER BY id`,
-    [course_id],
+    [checkin_id],
     `get a checkin history by checkin_id ${checkin_id}`);
 }
