@@ -49,12 +49,3 @@ function onListening() {
     : 'port ' + addr.port;
   logger.info('Listening on ' + bind);
 }
-
-// // const app = new koa();
-
-// // app.use(ctx => {
-// //   ctx.body = 'Hello Koa';
-// // });
-
-// // app.listen(port);
-// // console.log("???")

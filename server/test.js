@@ -10,11 +10,4 @@ function generateCheckinID(token) {
 }
 
 
-console.log(generateCheckinID('ssss').length)
-
-// var crypto = require('crypto');
-
 var hash = crypto.createHash('sha256').update('dfg').digest('hex');
-
-console.log(hash)
-console.log(hash.length)

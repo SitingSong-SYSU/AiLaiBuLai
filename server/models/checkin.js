@@ -52,7 +52,7 @@ export async function createCheckin(checkin) {
 export async function getInfoByCheckinID(checkin_id) {
   return await execAsync('SELECT title, datetime FROM CHECKIN WHERE checkin_id = ?',
     [checkin_id],
-    `select gps by checkin_id ${checkin_id}`);
+    `get info by checkin_id ${checkin_id}`);
 }
 
 /**
