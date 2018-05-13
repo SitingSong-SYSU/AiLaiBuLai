@@ -95,17 +95,21 @@ export async function getCheckinInfo(ctx) {
 	}
 	ctx.token = token;
 
-	const checkin_id = await CheckinServ.getCheckinIDByToken(ctx.token);
-	console.log(checkin_id)
-	try {
-		var t = await checkinModel.getCheckinInfo(checkin_id)
-	} catch (err) {
-		console.log(err)
+	const checkin_id = ctx.params.checkin_id;
+
+	var checkinInfo = await checkinModel.getCheckinInfo(checkin_id)[0] || { checkedin: [] };
+	console.log(JSON.stringify(checkinInfo));
+	const share_id = await CheckinServ.getShareIDByCheckinID(checkin_id);
+	if (share_id) {
+		checkinInfo.share_id = share_id;
+		checkinInfo.is_on = true;
+	} else {
+		checkinInfo.share_id = -1;
+		checkinInfo.is_on = false;
 	}
-	console.log(t)
-	var a = JSON.stringify(t)
+	const info = await checkinModel.getInfoByCheckinID(checkin_id);
+	checkin_id.title = info.title;
+	checkin_id.datetime = info.datetime;
 
-	console.log(a)
-
-	sendData(ctx, 200, a);
+	sendData(ctx, 200, JSON.stringify(checkinInfo));
 }
