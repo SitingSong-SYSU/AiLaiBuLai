@@ -67,16 +67,19 @@ export async function getCheckinTitle(ctx) {
 		return;
 	}
 	ctx.token = token;
+	console.log(ctx.token)
 	console.log("1")
 	const checkin_id = await CheckinServ.getCheckinIDByShareID(ctx.params.share_id);
 	console.log('3')
 	const checkinInfo = await checkinModel.getInfoByCheckinID(checkin_id);
-	console.log(checkin_id);
-	console.log(checkinInfo)
+	console.log("???" + checkin_id);
+	console.log("??" + checkinInfo)
 	if (!checkin_id || checkinInfo.length === 0) {
 		sendData(ctx, 400, JSON.stringify({ msg: "该签到活动不存在" }));
 		return;
 	}
-	sendData(ctx, 200, JSON.stringify(checkinInfo));
+	console.log(JSON.stringify(checkinInfo[0]));
+	sendData(ctx, 200, JSON.stringify(checkinInfo[0]));
+	console.log(ctx.response.body);
 }
 

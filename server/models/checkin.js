@@ -105,7 +105,6 @@ export async function getCheckinList(token) {
  * @returns 
  */
 export async function getCheckinInfo(checkin_id) {
-  console.log('cfghuijok')
   return await execAsync(
     `SELECT USER.id, USER.name, USER.university
       FROM

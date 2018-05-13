@@ -87,14 +87,14 @@ async function del(key) {
  * 判断是否是在附近的gps
  * 
  * @export
- * @param {any} teacher_gps 
- * @param {any} student_gps 
+ * @param {any} checkined_gps 
+ * @param {any} checkin_gps 
  * latitude  纬度
  * longitude 经度
  * @returns 
  */
-export function isNearbyGPS(teacher_gps, student_gps) {
-  if (math.abs(teacher_gps.latitude - student_gps.latitude) < 1.0 && math.abs(teacher_gps.longitude - student_gps.longitude) < 1.0) {
+export function isNearbyGPS(checkined_gps, checkin_gps) {
+  if (math.abs(checkined_gps.latitude - checkin_gps.latitude) < 1.0 && math.abs(checkined_gps.longitude - checkin_gps.longitude) < 1.0) {
     return true;
   } else {
     return false;

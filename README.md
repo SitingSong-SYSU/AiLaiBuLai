@@ -210,7 +210,7 @@ GET /checkin/{checkin_id}
           {
               "id":"15457682",
               "name":"李同学",
-              "university": "中山大学"                        
+              "university": "中山大学"
           }
       ],
       "checkedin_num":75,
