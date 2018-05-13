@@ -42,7 +42,7 @@ export async function launchCheckin(ctx) {
 	}
 
 	const checkin = ctx.request.body;
-	const	ids = await CheckinServ.set(ctx.token, ctx.request.body.limit_time);
+	const ids = await CheckinServ.set(ctx.token, ctx.request.body.limit_time);
 	checkin.checkin_id = ids.checkin_id;
 	checkin.token = ctx.token;
 
@@ -60,13 +60,21 @@ export async function launchCheckin(ctx) {
  * @param {any} ctx 
  */
 export async function stopCheckin(ctx) {
+	const token = ctx.request.header.token;
+	if (!token) {
+		sendData(ctx, 401, JSON.stringify({ msg: '请先登陆' }));
+		return;
+	}
+
+	ctx.token = token;
 	// 检查是否存在正在进行的签到
-	if (await CheckinServ.getCheckinIDByToken(ctx.token) === nil) {
+	if (await CheckinServ.getCheckinIDByToken(ctx.token) === null) {
 		sendData(ctx, 400, JSON.stringify({ msg: '没有签到正在进行，停止签到失败' }));
 		return;
 	}
 
 	await CheckinServ.delByToken(ctx.token);
+
 	sendData(ctx, 204);
 }
 
@@ -87,13 +95,13 @@ export async function getCheckinInfo(ctx) {
 	const checkin_id = await CheckinServ.getCheckinIDByToken(ctx.token);
 	console.log(checkin_id)
 	try {
-	var t = await checkinModel.getCheckinInfo(checkin_id)
-	} catch(err) {
+		var t = await checkinModel.getCheckinInfo(checkin_id)
+	} catch (err) {
 		console.log(err)
 	}
 	console.log(t)
 	var a = JSON.stringify(t)
-	
+
 	console.log(a)
 
 	sendData(ctx, 200, a);
