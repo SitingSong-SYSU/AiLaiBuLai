@@ -23,7 +23,7 @@ router.use(function (ctx, next) {
   if (ctx.token) {
     next();
   } else {
-    sendData(ctx, 401, JSON.stringify({ msg: '请先登录' }));
+    sendData(ctx, 400, JSON.stringify({ msg: '请先登录' }));
   }
 });
 

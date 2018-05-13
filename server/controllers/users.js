@@ -26,7 +26,7 @@ export async function login(ctx) {
 export async function submitInfo(ctx) {
     const token = ctx.request.header.token;
     if (!token) {
-        sendData(ctx, 403, JSON.stringify({ msg: '请先登陆' }));
+        sendData(ctx, 400, JSON.stringify({ msg: '请先登陆' }));
         return;
     } 
     ctx.token = token;
@@ -35,7 +35,7 @@ export async function submitInfo(ctx) {
     const users = await userModel.getUser(ctx.token);
     
     if (users.length !== 0) {
-        sendData(ctx, 401, JSON.stringify({ msg: '已提交过个人信息' }));
+        sendData(ctx, 400, JSON.stringify({ msg: '已提交过个人信息' }));
         return;
     }
 

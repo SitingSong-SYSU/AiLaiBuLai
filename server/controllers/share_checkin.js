@@ -19,7 +19,7 @@ export async function checkin(ctx) {
 
 	const token = ctx.request.header.token;
 	if (!token) {
-		sendData(ctx, 403, JSON.stringify({ msg: '请先登陆' }));
+		sendData(ctx, 401, JSON.stringify({ msg: '请先登陆' }));
 		return;
 	}
 	ctx.token = token;
@@ -28,9 +28,9 @@ export async function checkin(ctx) {
 
 	// TODO 检验gps是否符合要求
 	// CheckinServ.isNearbyGPS();
-	
+
 	// fs.writeFileSync(`${pitcPath}/${ctx.token}v1.jpg`, ctx.request.body, 'utf8')
-	
+
 	// TODO 检查照片人脸是否匹配，调用api
 	if (CheckinServ.isFaceMatch(token)) {
 
@@ -38,7 +38,7 @@ export async function checkin(ctx) {
 	
 	fs.writeFileSync(`${pitcPath}/${ctx.token}v1.jpg`, ctx.request.body, 'utf8');
 	await checkinTokenModel.createCheckinToken(user);
-	
+
 	sendData(ctx, 201, JSON.stringify({ msg: '签到成功' }));
 }
 
@@ -51,14 +51,18 @@ export async function checkin(ctx) {
 export async function getCheckinTitle(ctx) {
 	const token = ctx.request.header.token;
 	if (!token) {
-		sendData(ctx, 403, JSON.stringify({ msg: '请先登陆' }));
+		sendData(ctx, 401, JSON.stringify({ msg: '请先登陆' }));
 		return;
 	}
 	ctx.token = token;
-	const checkin_id = await checkinCtrl.getCheckinInfo(ctx.params.share_id),
-		checkinInfo = await checkinModel.getInfoByCheckID(checkin_id);
+	console.log("1")
+	const checkin_id = await CheckinServ.getCheckinIDByShareID(ctx.params.share_id);
+	console.log('3')
+	const checkinInfo = await checkinModel.getInfoByCheckinID(checkin_id);
+	console.log(checkin_id);
+	console.log(checkinInfo)
 	if (!checkin_id || checkinInfo.length === 0) {
-		sendData(ctx, 401, JSON.stringify({ msg: "该签到活动不存在" }));
+		sendData(ctx, 400, JSON.stringify({ msg: "该签到活动不存在" }));
 		return;
 	}
 	sendData(ctx, 200, JSON.stringify(checkinInfo));

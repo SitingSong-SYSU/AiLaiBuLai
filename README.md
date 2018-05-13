@@ -42,7 +42,7 @@ POST /users/session
   201 OK
 
 
-### 发布签到[以测试]
+### 发布签到[已测试]
 
 + request 
 
@@ -108,7 +108,7 @@ POST /users/session
     }
     ```
 
-### 查看签到活动的名称
+### 查看签到活动的名称[已测试]
 
 + request 
 
@@ -187,7 +187,7 @@ DELETE /checkin/{checkin_id}
     ```
 
 
-### 具体每个签到信息
+### 具体每个签到信息[已测试]
 
 GET /checkin/{checkin_id}
 

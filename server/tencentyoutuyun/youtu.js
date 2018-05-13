@@ -27,7 +27,7 @@ function statusText(status) {
     case 401:
       statusText = 'Unauthorized';
       break;
-    case 403:
+    case 401:
       statusText = 'Forbidden';
       break;
     case 500:
