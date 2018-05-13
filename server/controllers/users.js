@@ -39,8 +39,8 @@ export async function submitInfo(ctx) {
         return;
     }
 
-    await userModel.createUser(user);
-    // TODO 未知是否可用
+    if (await userModel.createUser(user))   ;
+    
     fs.writeFileSync(`${pitcPath}/${ctx.token}.jpg`, ctx.request.body, 'utf8');
     
     sendData(ctx, 201, JSON.stringify({ msg: '提交个人信息成功' }));

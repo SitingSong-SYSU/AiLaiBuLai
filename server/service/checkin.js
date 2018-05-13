@@ -84,8 +84,6 @@ async function del(key) {
   await redisService.del(key);
 }
 
-// TODO
-
 /**
  * 判断是否是在附近的gps
  * 

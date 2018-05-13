@@ -35,6 +35,9 @@ export async function launchCheckin(ctx) {
 	}
 
 	ctx.token = token;
+	console.log(ctx.request.body);
+	console.log(ctx.request.header);
+	console.log("???")
 	// 检查是否存在正在进行的签到
 	if (await CheckinServ.getCheckinIDByToken(ctx.token) !== null) {
 		sendData(ctx, 400, JSON.stringify({ msg: '有签到正在进行，发起签到失败' }));

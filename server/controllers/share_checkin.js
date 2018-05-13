@@ -15,8 +15,6 @@ const port = CONF.port;
  * @param {any} ctx 
  */
 export async function checkin(ctx) {
-	console.log("???")
-
 	const token = ctx.request.header.token;
 	if (!token) {
 		sendData(ctx, 401, JSON.stringify({ msg: '请先登陆' }));
@@ -24,22 +22,36 @@ export async function checkin(ctx) {
 	}
 	ctx.token = token;
 
-	const user = ctx.query;
-
-	// TODO 检验gps是否符合要求
-	// CheckinServ.isNearbyGPS();
-
-	// fs.writeFileSync(`${pitcPath}/${ctx.token}v1.jpg`, ctx.request.body, 'utf8')
-
-	// TODO 检查照片人脸是否匹配，调用api
-	if (CheckinServ.isFaceMatch(token)) {
-
+	// 判断该签到活动是否存在
+	const checkin_id = await CheckinServ.getCheckinIDByShareID(ctx.params.share_id);
+	if (!checkin_id) {
+		sendData(ctx, 400, JSON.stringify({ msg: '该签到活动可能已过期' }));
+		return;
 	}
-	
-	fs.writeFileSync(`${pitcPath}/${ctx.token}v1.jpg`, ctx.request.body, 'utf8');
-	await checkinTokenModel.createCheckinToken(user);
 
-	sendData(ctx, 201, JSON.stringify({ msg: '签到成功' }));
+	// 获得发起人和签到人的gps
+	const checkined_gps = ctx.query,
+		checkin_gps = await checkinModel.getGpsByCheckinID(checkin)[0];
+
+	// 检验gps是否符合要求
+	if (!CheckinServ.isNearbyGPS(checkined_gps, checkin_gps)) {
+		sendData(ctx, 400, JSON.stringify({ msg: '距离过远无法进行签到' }));
+		return;
+	}
+
+	// 检查照片人脸是否匹配，调用api
+	fs.writeFileSync(`${pitcPath}/${ctx.token}v1.jpg`, ctx.request.body, 'utf8')
+	if (!CheckinServ.isFaceMatch(token)) {
+		sendData(ctx, 400, JSON.stringify({ msg: '人脸匹配失败无法进行签到' }));
+		return;
+	}
+
+	if ((await checkinTokenModel.createCheckinToken(checkined_gps)).length === 1) {
+		sendData(ctx, 201, JSON.stringify({ msg: '签到成功' }));
+	} else {
+		sendData(ctx, 400, JSON.stringify({ msg: '签到失败' }));
+	}
+
 }
 
 /**

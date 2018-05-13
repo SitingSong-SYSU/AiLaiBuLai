@@ -64,7 +64,7 @@ export async function getInfoByCheckinID(checkin_id) {
  * @param {any} checkin_id 
  * @returns 
  */
-export async function getGpsByCheckID(checkin_id) {
+export async function getGpsByCheckinID(checkin_id) {
   return await execAsync('SELECT latitude, longitude FROM CHECKIN WHERE checkin_id = ?',
     [checkin_id],
     `select gps by checkin_id ${checkin_id}`);
