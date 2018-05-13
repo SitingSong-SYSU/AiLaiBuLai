@@ -41,7 +41,7 @@ export async function submitInfo(ctx) {
 
     if (await userModel.createUser(user))   ;
     
-    fs.writeFileSync(`${pitcPath}/${ctx.token}.jpg`, ctx.request.body, 'utf8');
+    fs.writeFileSync(`${pitcPath}/${ctx.token}.jpg`, ctx.request.body.photo, 'utf8');
     
     sendData(ctx, 201, JSON.stringify({ msg: '提交个人信息成功' }));
 }

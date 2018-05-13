@@ -40,7 +40,7 @@ export async function checkin(ctx) {
 	}
 
 	// 检查照片人脸是否匹配，调用api
-	fs.writeFileSync(`${pitcPath}/${ctx.token}v1.jpg`, ctx.request.body, 'utf8')
+	fs.writeFileSync(`${pitcPath}/${ctx.token}v1.jpg`, ctx.request.body.photo, 'utf8')
 	if (!CheckinServ.isFaceMatch(token)) {
 		sendData(ctx, 400, JSON.stringify({ msg: '人脸匹配失败无法进行签到' }));
 		return;
