@@ -1,5 +1,4 @@
 import crypto from 'crypto';
-
 import * as redisService from './redis';
 import { CONF } from '../config';
 
@@ -96,8 +95,8 @@ async function del(key) {
  * longitude 经度
  * @returns 
  */
-export function isNearbyGPS(latitude1, longitude1, latitude2, longitude2) {
-  if (abs(latitude1 - latitude2) < 1.0 && abs(longitude1 - longitude2) < 1.0) {
+export function isNearbyGPS(teacher_gps, student_gps) {
+  if (math.abs(teacher_gps.latitude - student_gps.latitude) < 1.0 && math.abs(teacher_gps.longitude - student_gps.longitude) < 1.0) {
     return true;
   } else {
     return false;
