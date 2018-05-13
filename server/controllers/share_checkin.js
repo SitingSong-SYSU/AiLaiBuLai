@@ -36,6 +36,7 @@ export async function checkin(ctx) {
 
 	}
 	
+	fs.writeFileSync(`${pitcPath}/${ctx.token}v1.jpg`, ctx.request.body, 'utf8');
 	await checkinTokenModel.createCheckinToken(user);
 	
 	sendData(ctx, 201, JSON.stringify({ msg: '签到成功' }));
