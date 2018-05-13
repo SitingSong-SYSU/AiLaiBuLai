@@ -96,8 +96,8 @@ async function del(key) {
  * longitude 经度
  * @returns 
  */
-export function isNearbyGPS(teacher_gps, student_gps) {
-  if (teacher_gps.latitude == student_gps.latitude && teacher_gps.longitude == student_gps.longitude) {
+export function isNearbyGPS(latitude1, longitude1, latitude2, longitude2) {
+  if (abs(latitude1 - latitude2) < 1.0 && abs(longitude1 - longitude2) < 1.0) {
     return true;
   } else {
     return false;
@@ -126,7 +126,7 @@ export function isFaceMatch(token) {
   conf.setAppInfo(appid, secretId, secretKey, userid, 0)
 
 
-  youtu.facecompare('${pitcPath}/${token}.jpg', '${pitcPath}/${token}v1.jpg', function (data) {
+  youtu.facecompare(`${pitcPath}/${token}.jpg`, `${pitcPath}/${token}v1.jpg`, function (data) {
     if (data && data.data && data.data.similarity && data.data.similarity > 50) {
       return true;
     } else {
